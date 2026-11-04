@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% from "_macros.html" import card %}
+
+{% block title %}{{ product.name }} — {{ site.name or 'Shop' }}{% endblock %}
+
+{% block body %}
+<nav class="wrap crumbs" aria-label="Breadcrumb">
+  <a href="{{ url_for('index') }}">Catalogue</a>
+  {% if product.category %}
+  <span aria-hidden="true">/</span>
+  <a href="{{ url_for('index', cat=product.category) }}">{{ product.category_label or product.category }}</a>
+  {% endif %}
+  <span aria-hidden="true">/</span>
+  <span aria-current="page">{{ product.name }}</span>
+</nav>
+
+<article class="wrap detail">
+  <section class="gallery">
+    <div class="gallery-stage">
+      <img class="gallery-main" id="gallery-main"
+           src="{{ url_for('static', filename='img/' + product.images[0]) }}"
+           alt="{{ product.name }}" width="900" height="900">
+    </div>
+    {% if product.images | length > 1 %}
+    <ul class="gallery-thumbs">
+      {% for image in product.images %}
+      <li>
+        <button class="thumb" type="button" data-full="{{ url_for('static', filename='img/' + image) }}"
+                aria-label="Show photo {{ loop.index }} of {{ product.name }}">
+          <img src="{{ url_for('static', filename='img/thumb_' + image) }}" alt="" loading="lazy" width="120" height="120">
+        </button>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </section>
+
+  <section class="info">
+    <p class="info-cat">{{ product.category_label or product.category }}</p>
+    <h1 class="info-name">{{ product.name }}</h1>
+    <p class="info-price {{ 'is-empty' if not product.price }}">{{ product | price_text }}</p>
+
+    <div class="info-meta">
+      {% if product.code %}<span class="meta-pill">Code {{ product.code }}</span>{% endif %}
+      {% if product.sizes %}<span class="meta-pill">Sizes {{ product.sizes }}</span>{% endif %}
+      {% if product.images | length > 1 %}<span class="meta-pill">{{ product.images | length }} colourways</span>{% endif %}
+    </div>
+
+    {% if product.summary %}<p class="info-desc"><strong>{{ product.summary }}</strong></p>{% endif %}
+
+    {% if product.description %}
+    <div class="info-desc">
+      {% for para in product.description %}<p>{{ para }}</p>{% endfor %}
+    </div>
+    {% endif %}
+
+    {% if product.specs %}
+    <dl class="specs">
+      {% for spec in product.specs %}
+      <div class="spec-row"><dt>{{ spec.label }}</dt><dd>{{ spec.value }}</dd></div>
+      {% endfor %}
+    </dl>
+    {% endif %}
+
+    <div class="buy-row">
+      <div class="qty" aria-label="Quantity">
+        <button class="stepper-btn" type="button" id="qty-dec" aria-label="Decrease quantity">−</button>
+        <span class="stepper-qty" id="buy-qty">1</span>
+        <button class="stepper-btn" type="button" id="qty-inc" aria-label="Increase quantity">+</button>
+      </div>
+      <button class="btn btn-primary add-btn" type="button" data-add-to-cart="{{ product.id }}">
+        <span class="add-label">Add to cart</span>
+      </button>
+      {% if site.whatsapp %}
+      <a class="btn btn-ghost"
+         href="https://wa.me/{{ site.whatsapp }}?text={{ ('Hello ' + (site.name or 'FootMart') + ', I want to order: ' + product.name + (' (' + product.code + ')' if product.code else '')) | urlencode }}">
+        Ask about this pair</a>
+      {% endif %}
+    </div>
+
+    {% if not site.whatsapp %}
+    <p class="info-note">Cart works now. To let customers send orders to you, add your number as <code>site.whatsapp</code> in <code>data/catalog.json</code> — international format, digits only (e.g. 2547XXXXXXXX).</p>
+    {% endif %}
+
+    {% if site.delivery_note %}<p class="info-note">{{ site.delivery_note }}</p>{% endif %}
+  </section>
+</article>
+
+{% if related %}
+<section class="wrap related">
+  <h2 class="section-title">More in {{ product.category_label or product.category }}</h2>
+  <ul class="grid grid-4">
+    {% for item in related %}{{ card(item) }}{% endfor %}
+  </ul>
+</section>
+{% endif %}
+{% endblock %}

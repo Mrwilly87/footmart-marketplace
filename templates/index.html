@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+{% from "_macros.html" import card %}
+
+{% block title %}{{ site.name or 'Shop' }} — {% if active_category %}{{ active_category }}{% elif query %}{{ query }}{% else %}{{ total }} shoes{% endif %}{% endblock %}
+
+{% block body %}
+{% set browsing = not query and not active_category %}
+
+{% if browsing and featured %}
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <span class="scene scene-grid is-on" data-scene="grid"></span>
+    <span class="scene scene-clay" data-scene="clay"></span>
+    <span class="scene scene-steel" data-scene="steel"></span>
+    <span class="scene scene-ember" data-scene="ember"></span>
+  </div>
+
+  <div class="wrap hero-inner">
+    <div>
+      <p class="chip">{{ site.chip or 'FootMart · Nairobi' }}</p>
+      <h1 class="hero-title">{{ site.headline_lead or 'Built for' }}<br>
+        <span class="tone">{{ site.headline_tail or 'every step.' }}</span></h1>
+      <p class="hero-sub">{{ site.tagline }}</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#catalogue">Browse {{ total }} styles</a>
+        <a class="btn btn-ghost" href="{{ url_for('product_page', product_id=featured.id) }}">This week's pick</a>
+      </div>
+    </div>
+
+    <div class="hero-stage">
+      <div class="glow-ring" aria-hidden="true"></div>
+      <img class="hero-product" src="{{ url_for('static', filename='img/' + featured.images[0]) }}"
+           alt="{{ featured.name }}" width="620" height="620">
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="scene-picker" role="group" aria-label="Backdrop styles">
+      <button class="scene-swatch sw-grid" type="button" data-scene="grid" aria-pressed="true" aria-label="Grid backdrop"></button>
+      <button class="scene-swatch sw-clay" type="button" data-scene="clay" aria-pressed="false" aria-label="Clay backdrop"></button>
+      <button class="scene-swatch sw-steel" type="button" data-scene="steel" aria-pressed="false" aria-label="Steel backdrop"></button>
+      <button class="scene-swatch sw-ember" type="button" data-scene="ember" aria-pressed="false" aria-label="Ember backdrop"></button>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if browsing and category_tiles %}
+<section class="promo-strip wrap" aria-label="Store benefits">
+  <div class="promo-item"><span aria-hidden="true">⚡</span><div><strong>Quick dispatch</strong><small>Across Nairobi</small></div></div>
+  <div class="promo-item"><span aria-hidden="true">✓</span><div><strong>Easy ordering</strong><small>Review your order before sending</small></div></div>
+  <div class="promo-item"><span aria-hidden="true">↗</span><div><strong>Flexible payment</strong><small>Cash on delivery or M-Pesa</small></div></div>
+  <div class="promo-item"><span aria-hidden="true">📦</span><div><strong>Delivery offer</strong><small>Free in Nairobi over KSh {{ site.free_delivery_threshold | default(3500) | int }}</small></div></div>
+</section>
+
+<section class="promo-grid wrap" aria-label="Featured shopping collections">
+  {% set promo_categories = category_tiles[:3] %}
+  {% for tile in promo_categories %}
+  <a class="promo-card promo-card-{{ loop.index }}" href="{{ url_for('index', cat=tile.slug) }}">
+    <img src="{{ url_for('static', filename='img/thumb_' + tile.image) }}" alt="" loading="lazy">
+    <span class="promo-card-shade"></span>
+    <span class="promo-card-copy">
+      <span class="mini-label">{{ tile.count }} styles to explore</span>
+      <strong>{{ tile.label }}</strong>
+      <span class="promo-card-link">Shop collection <span aria-hidden="true">→</span></span>
+    </span>
+  </a>
+  {% endfor %}
+</section>
+
+<section class="rail">
+  <div class="wrap">
+    <div class="rail-head">
+      <h2 class="rail-title">Shop by category</h2>
+      <span class="mono">{{ category_tiles | length }} sections</span>
+    </div>
+    <div class="rail-track">
+      {% for tile in category_tiles %}
+      <a class="tile reveal" href="{{ url_for('index', cat=tile.slug) }}">
+        <div class="tile-media">
+          <img src="{{ url_for('static', filename='img/thumb_' + tile.image) }}"
+               alt="" loading="lazy" width="420" height="315">
+        </div>
+        <div class="tile-body">
+          <h3 class="tile-name">{{ tile.label }}</h3>
+          <p class="tile-meta">{{ tile.count }} styles</p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if browsing and just_landed %}
+<section class="rail">
+  <div class="wrap">
+    <div class="rail-head">
+      <h2 class="rail-title">Just landed</h2>
+      <span class="mono">New in stock</span>
+    </div>
+    <div class="rail-track">
+      {% for item in just_landed %}
+      <a class="tile reveal" href="{{ url_for('product_page', product_id=item.id) }}">
+        <div class="tile-media">
+          <img src="{{ url_for('static', filename='img/thumb_' + item.images[0]) }}"
+               alt="{{ item.name }}" loading="lazy" width="420" height="315">
+        </div>
+        <div class="tile-body">
+          <h3 class="tile-name">{{ item.name }}</h3>
+          <p class="tile-meta">{{ item | price_text }}</p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if active_category and products %}
+<section class="category-banner wrap">
+  <div class="category-banner-copy">
+    <p class="mini-label">Explore the collection</p>
+    <h1>{{ products[0].category_label or active_category | replace('-', ' ') | title }}</h1>
+    <p>{{ products | length }} styles selected for comfort, everyday wear, and easy shopping.</p>
+  </div>
+  <img src="{{ url_for('static', filename='img/' + products[0].images[0]) }}"
+       alt="" loading="lazy">
+</section>
+{% endif %}
+
+<section class="wrap listing" id="catalogue">
+  <div class="listing-head">
+    <h1 class="listing-title">
+      {% if query %}Results for &ldquo;{{ query }}&rdquo;
+      {% elif active_category %}{{ (products[0].category_label if products else active_category | replace('-', ' ') | title) }}
+      {% else %}The full catalogue{% endif %}
+    </h1>
+    <p class="listing-count">{{ products | length }} of {{ total }} items</p>
+    {% if products %}
+    <label class="sort-control">
+      <span>Sort by</span>
+      <select id="product-sort" aria-label="Sort products">
+        <option value="featured">Featured</option>
+        <option value="price-low">Price: low to high</option>
+        <option value="price-high">Price: high to low</option>
+        <option value="name">Name</option>
+      </select>
+    </label>
+    {% endif %}
+  </div>
+
+  {% if products %}
+  <ul class="grid">
+    {% for item in products %}{{ card(item) }}{% endfor %}
+  </ul>
+  {% else %}
+  <div class="empty">
+    <p class="empty-title">Nothing matches that search.</p>
+    <p><a class="btn btn-ghost btn-sm" href="{{ url_for('index') }}">Show all products</a></p>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

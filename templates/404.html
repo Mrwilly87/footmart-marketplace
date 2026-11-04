@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Not found — {{ site.name or 'Shop' }}{% endblock %}
+
+{% block body %}
+<section class="wrap empty-page">
+  <h1>404 — nothing here</h1>
+  <p>That style may have been renamed or removed from <code>data/catalog.json</code>.</p>
+  <p style="margin-top:26px"><a class="btn btn-primary" href="{{ url_for('index') }}">Back to the catalogue</a></p>
+</section>
+{% endblock %}

@@ -1,0 +1,3453 @@
+{
+  "site": {
+    "name": "FootMart Kenya",
+    "brand_lead": "Foot",
+    "brand_tail": "Mart",
+    "chip": "FootMart - Nairobi",
+    "headline_lead": "Built for",
+    "headline_tail": "every step.",
+    "tagline": "Slides, sandals, heels, loafers and kids' shoes for daily comfort and easy style.",
+    "phone": "+254 700 000 000",
+    "email": "hello@footmart.co.ke",
+    "whatsapp": "254748377420",
+    "location": "Nairobi, Kenya",
+    "currency": "KES",
+    "delivery_fee": 350,
+    "free_delivery_threshold": 3500,
+    "featured": "pic-36",
+    "announce": "Free delivery in Nairobi on orders above KSh 3,500",
+    "announce_link": "/",
+    "announce_link_text": "Shop now",
+    "delivery_note": "Pay on delivery or through M-Pesa. Size confirmation is available before dispatch."
+  },
+  "products": [
+    {
+      "id": "pic-36",
+      "name": "Men's Penny Loafer",
+      "code": "PIC-36",
+      "category": "mens-shoes",
+      "category_label": "Men's Shoes",
+      "sizes": "",
+      "price": 4300,
+      "images": [
+        "p001.webp",
+        "p004.webp",
+        "p048.webp"
+      ],
+      "summary": "Tailored lines and everyday practicality for the modern man.",
+      "description": [
+        "Designed for everyday movement with a modern mens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Leather-look upper"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "New"
+    },
+    {
+      "id": "ycy010",
+      "name": "Men's Double-Buckle Slide",
+      "code": "YCY010",
+      "category": "mens-slides",
+      "category_label": "Men's Slides",
+      "sizes": "37-42",
+      "price": 575,
+      "images": [
+        "p002.webp"
+      ],
+      "summary": "Clean, easy slides for busy days and relaxed evenings.",
+      "description": [
+        "Designed for everyday movement with a modern mens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Cushioned EVA sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "ycy237",
+      "name": "Men's Double-Buckle Slide",
+      "code": "YCY237",
+      "category": "mens-slides",
+      "category_label": "Men's Slides",
+      "sizes": "37-42",
+      "price": 950,
+      "images": [
+        "p003.webp"
+      ],
+      "summary": "Clean, easy slides for busy days and relaxed evenings.",
+      "description": [
+        "Designed for everyday movement with a modern mens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Cushioned EVA sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p005",
+      "name": "Women's Buckle Slide Sandal",
+      "code": "",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "",
+      "price": 525,
+      "images": [
+        "p005.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p006",
+      "name": "Women's Slide Sandal",
+      "code": "",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "",
+      "price": 600,
+      "images": [
+        "p006.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "060-09",
+      "name": "Men's Double-Buckle Slide",
+      "code": "060-09",
+      "category": "mens-slides",
+      "category_label": "Men's Slides",
+      "sizes": "37-42",
+      "price": 600,
+      "images": [
+        "p007.webp"
+      ],
+      "summary": "Clean, easy slides for busy days and relaxed evenings.",
+      "description": [
+        "Designed for everyday movement with a modern mens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Cushioned EVA sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "New"
+    },
+    {
+      "id": "ycq102",
+      "name": "Men's Double-Buckle Slide",
+      "code": "YCQ102",
+      "category": "mens-slides",
+      "category_label": "Men's Slides",
+      "sizes": "37-42",
+      "price": 800,
+      "images": [
+        "p008.webp"
+      ],
+      "summary": "Clean, easy slides for busy days and relaxed evenings.",
+      "description": [
+        "Designed for everyday movement with a modern mens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Cushioned EVA sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "030-71",
+      "name": "Men's Double-Buckle Slide",
+      "code": "030-71",
+      "category": "mens-slides",
+      "category_label": "Men's Slides",
+      "sizes": "37-42",
+      "price": 800,
+      "images": [
+        "p009.webp",
+        "p015.webp"
+      ],
+      "summary": "Clean, easy slides for busy days and relaxed evenings.",
+      "description": [
+        "Designed for everyday movement with a modern mens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Cushioned EVA sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "at9159-02",
+      "name": "Men's Cross-Strap Slide",
+      "code": "AT9159-02",
+      "category": "mens-slides",
+      "category_label": "Men's Slides",
+      "sizes": "40-45",
+      "price": 700,
+      "images": [
+        "p010.webp",
+        "p011.webp"
+      ],
+      "summary": "Clean, easy slides for busy days and relaxed evenings.",
+      "description": [
+        "Designed for everyday movement with a modern mens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Cushioned EVA sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p012",
+      "name": "Chunky Low-Top Sneaker",
+      "code": "",
+      "category": "womens-shoes",
+      "category_label": "Women's Flats & Loafers",
+      "sizes": "36-41",
+      "price": 875,
+      "images": [
+        "p012.webp"
+      ],
+      "summary": "Smart, versatile footwear with a polished everyday finish.",
+      "description": [
+        "Designed for everyday movement with a modern womens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft-touch upper with comfort foam"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p013",
+      "name": "Retro Panel Sneaker",
+      "code": "",
+      "category": "womens-shoes",
+      "category_label": "Women's Flats & Loafers",
+      "sizes": "",
+      "price": 850,
+      "images": [
+        "p013.webp"
+      ],
+      "summary": "Smart, versatile footwear with a polished everyday finish.",
+      "description": [
+        "Designed for everyday movement with a modern womens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft-touch upper with comfort foam"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "New"
+    },
+    {
+      "id": "p014",
+      "name": "Two-Tone Court Sneaker",
+      "code": "",
+      "category": "womens-shoes",
+      "category_label": "Women's Flats & Loafers",
+      "sizes": "",
+      "price": 825,
+      "images": [
+        "p014.webp"
+      ],
+      "summary": "Smart, versatile footwear with a polished everyday finish.",
+      "description": [
+        "Designed for everyday movement with a modern womens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft-touch upper with comfort foam"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "h-03",
+      "name": "Kids High-Top Sneaker",
+      "code": "H-03",
+      "category": "kids",
+      "category_label": "Kids",
+      "sizes": "",
+      "price": 800,
+      "images": [
+        "p016.webp"
+      ],
+      "summary": "Active, durable pairs built for play and everyday wear.",
+      "description": [
+        "Designed for everyday movement with a modern kids finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible everyday synthetic upper"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p017",
+      "name": "Women's Two-Piece Buckle Sandal",
+      "code": "",
+      "category": "womens-sandals",
+      "category_label": "Women's Sandals",
+      "sizes": "",
+      "price": 875,
+      "images": [
+        "p017.webp"
+      ],
+      "summary": "Lightweight, stylish sandals for warm days and easy movement.",
+      "description": [
+        "Designed for everyday movement with a modern womens sandals finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft upper with supportive sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p018",
+      "name": "Women's Pointed Flats",
+      "code": "",
+      "category": "womens-shoes",
+      "category_label": "Women's Flats & Loafers",
+      "sizes": "",
+      "price": 550,
+      "images": [
+        "p018.webp"
+      ],
+      "summary": "Smart, versatile footwear with a polished everyday finish.",
+      "description": [
+        "Designed for everyday movement with a modern womens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft-touch upper with comfort foam"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p019",
+      "name": "Women's Gold-Buckle Loafer",
+      "code": "",
+      "category": "womens-shoes",
+      "category_label": "Women's Flats & Loafers",
+      "sizes": "",
+      "price": 725,
+      "images": [
+        "p019.webp"
+      ],
+      "summary": "Smart, versatile footwear with a polished everyday finish.",
+      "description": [
+        "Designed for everyday movement with a modern womens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft-touch upper with comfort foam"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "New"
+    },
+    {
+      "id": "tcw-807",
+      "name": "Kids Low-Top Sneaker",
+      "code": "TCW-807",
+      "category": "kids",
+      "category_label": "Kids",
+      "sizes": "31-36",
+      "price": 800,
+      "images": [
+        "p020.webp"
+      ],
+      "summary": "Active, durable pairs built for play and everyday wear.",
+      "description": [
+        "Designed for everyday movement with a modern kids finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible everyday synthetic upper"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p021",
+      "name": "Women's Hardware Loafer",
+      "code": "",
+      "category": "womens-shoes",
+      "category_label": "Women's Flats & Loafers",
+      "sizes": "",
+      "price": 975,
+      "images": [
+        "p021.webp"
+      ],
+      "summary": "Smart, versatile footwear with a polished everyday finish.",
+      "description": [
+        "Designed for everyday movement with a modern womens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft-touch upper with comfort foam"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "saf-537",
+      "name": "Court Sneaker",
+      "code": "SAF-537",
+      "category": "womens-shoes",
+      "category_label": "Women's Flats & Loafers",
+      "sizes": "36-41",
+      "price": 850,
+      "images": [
+        "p022.webp"
+      ],
+      "summary": "Smart, versatile footwear with a polished everyday finish.",
+      "description": [
+        "Designed for everyday movement with a modern womens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft-touch upper with comfort foam"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p023",
+      "name": "Kids Printed Sandal",
+      "code": "",
+      "category": "kids",
+      "category_label": "Kids",
+      "sizes": "",
+      "price": 725,
+      "images": [
+        "p023.webp"
+      ],
+      "summary": "Active, durable pairs built for play and everyday wear.",
+      "description": [
+        "Designed for everyday movement with a modern kids finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible everyday synthetic upper"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "xb-10",
+      "name": "Women's Thong Slide",
+      "code": "XB-10",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "",
+      "price": 900,
+      "images": [
+        "p024.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "New"
+    },
+    {
+      "id": "0197-jy11",
+      "name": "Men's Double-Buckle Slide",
+      "code": "0197-JY11",
+      "category": "mens-slides",
+      "category_label": "Men's Slides",
+      "sizes": "36-41",
+      "price": 775,
+      "images": [
+        "p025.webp"
+      ],
+      "summary": "Clean, easy slides for busy days and relaxed evenings.",
+      "description": [
+        "Designed for everyday movement with a modern mens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Cushioned EVA sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "fb-2",
+      "name": "Women's Glitter Slide",
+      "code": "FB-2",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "",
+      "price": 650,
+      "images": [
+        "p026.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "xb-18",
+      "name": "Women's Criss-Cross Slide",
+      "code": "XB-18",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "",
+      "price": 425,
+      "images": [
+        "p027.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p028",
+      "name": "Women's Printed Slide",
+      "code": "",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "",
+      "price": 400,
+      "images": [
+        "p028.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "hg-1",
+      "name": "Women's Floral Slide",
+      "code": "HG-1",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "",
+      "price": 775,
+      "images": [
+        "p029.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "New"
+    },
+    {
+      "id": "fb-5",
+      "name": "Women's Glitter Slide",
+      "code": "FB-5",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "",
+      "price": 850,
+      "images": [
+        "p030.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "mu7853",
+      "name": "Women's Block-Heel Sandal",
+      "code": "MU7853",
+      "category": "heels",
+      "category_label": "Heels & Wedges",
+      "sizes": "37-42",
+      "price": 525,
+      "images": [
+        "p031.webp"
+      ],
+      "summary": "Elevated silhouettes made for evenings and standout looks.",
+      "description": [
+        "Designed for everyday movement with a modern heels finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Synthetic leather finish"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "hs-5882",
+      "name": "Women's Buckle Mule",
+      "code": "HS-5882",
+      "category": "womens-shoes",
+      "category_label": "Women's Flats & Loafers",
+      "sizes": "37-41",
+      "price": 600,
+      "images": [
+        "p032.webp"
+      ],
+      "summary": "Smart, versatile footwear with a polished everyday finish.",
+      "description": [
+        "Designed for everyday movement with a modern womens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft-touch upper with comfort foam"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p033",
+      "name": "Women's T-Strap Slide Sandal",
+      "code": "",
+      "category": "womens-sandals",
+      "category_label": "Women's Sandals",
+      "sizes": "",
+      "price": 475,
+      "images": [
+        "p033.webp"
+      ],
+      "summary": "Lightweight, stylish sandals for warm days and easy movement.",
+      "description": [
+        "Designed for everyday movement with a modern womens sandals finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft upper with supportive sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "lta282a",
+      "name": "Women's Wide-Strap Slide",
+      "code": "LTA282A",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "37-41",
+      "price": 650,
+      "images": [
+        "p034.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "New"
+    },
+    {
+      "id": "p035",
+      "name": "Women's Mary-Jane Sandal",
+      "code": "",
+      "category": "womens-sandals",
+      "category_label": "Women's Sandals",
+      "sizes": "",
+      "price": 425,
+      "images": [
+        "p035.webp"
+      ],
+      "summary": "Lightweight, stylish sandals for warm days and easy movement.",
+      "description": [
+        "Designed for everyday movement with a modern womens sandals finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft upper with supportive sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p036",
+      "name": "Women's Woven Slide",
+      "code": "",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "36-41",
+      "price": 900,
+      "images": [
+        "p036.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p037",
+      "name": "Women's Embellished Slide",
+      "code": "",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "",
+      "price": 875,
+      "images": [
+        "p037.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "da176s",
+      "name": "Men's Logo Slide",
+      "code": "DA176S",
+      "category": "mens-slides",
+      "category_label": "Men's Slides",
+      "sizes": "40-45",
+      "price": 400,
+      "images": [
+        "p038.webp"
+      ],
+      "summary": "Clean, easy slides for busy days and relaxed evenings.",
+      "description": [
+        "Designed for everyday movement with a modern mens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Cushioned EVA sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "mm-7",
+      "name": "Women's Woven Clog",
+      "code": "MM-7",
+      "category": "womens-shoes",
+      "category_label": "Women's Flats & Loafers",
+      "sizes": "",
+      "price": 525,
+      "images": [
+        "p039.webp"
+      ],
+      "summary": "Smart, versatile footwear with a polished everyday finish.",
+      "description": [
+        "Designed for everyday movement with a modern womens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft-touch upper with comfort foam"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "New"
+    },
+    {
+      "id": "hs-5889",
+      "name": "Women's Slide Sandal",
+      "code": "HS-5889",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "37-41",
+      "price": 400,
+      "images": [
+        "p040.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "c-17",
+      "name": "Men's Double-Buckle Slide",
+      "code": "C-17",
+      "category": "mens-slides",
+      "category_label": "Men's Slides",
+      "sizes": "36-41",
+      "price": 575,
+      "images": [
+        "p041.webp"
+      ],
+      "summary": "Clean, easy slides for busy days and relaxed evenings.",
+      "description": [
+        "Designed for everyday movement with a modern mens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Cushioned EVA sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "c-21",
+      "name": "Men's Double-Buckle Slide",
+      "code": "C-21",
+      "category": "mens-slides",
+      "category_label": "Men's Slides",
+      "sizes": "36-41",
+      "price": 950,
+      "images": [
+        "p042.webp"
+      ],
+      "summary": "Clean, easy slides for busy days and relaxed evenings.",
+      "description": [
+        "Designed for everyday movement with a modern mens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Cushioned EVA sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "2025-a24",
+      "name": "Women's Pointed Mule",
+      "code": "2025-A24",
+      "category": "womens-shoes",
+      "category_label": "Women's Flats & Loafers",
+      "sizes": "",
+      "price": 725,
+      "images": [
+        "p043.webp"
+      ],
+      "summary": "Smart, versatile footwear with a polished everyday finish.",
+      "description": [
+        "Designed for everyday movement with a modern womens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft-touch upper with comfort foam"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "fb-029",
+      "name": "Men's Low-Top Sneaker",
+      "code": "FB-029",
+      "category": "mens-shoes",
+      "category_label": "Men's Shoes",
+      "sizes": "37-42",
+      "price": 500,
+      "images": [
+        "p044.webp"
+      ],
+      "summary": "Tailored lines and everyday practicality for the modern man.",
+      "description": [
+        "Designed for everyday movement with a modern mens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Leather-look upper"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "New"
+    },
+    {
+      "id": "g790-4l",
+      "name": "Women's Heeled Sandal",
+      "code": "G790-4L",
+      "category": "heels",
+      "category_label": "Heels & Wedges",
+      "sizes": "31-36",
+      "price": 575,
+      "images": [
+        "p045.webp"
+      ],
+      "summary": "Elevated silhouettes made for evenings and standout looks.",
+      "description": [
+        "Designed for everyday movement with a modern heels finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Synthetic leather finish"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "da8758",
+      "name": "Men's Logo Slide",
+      "code": "DA8758",
+      "category": "mens-slides",
+      "category_label": "Men's Slides",
+      "sizes": "40-45",
+      "price": 450,
+      "images": [
+        "p046.webp"
+      ],
+      "summary": "Clean, easy slides for busy days and relaxed evenings.",
+      "description": [
+        "Designed for everyday movement with a modern mens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Cushioned EVA sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p047",
+      "name": "Women's Strappy Sandal",
+      "code": "",
+      "category": "womens-sandals",
+      "category_label": "Women's Sandals",
+      "sizes": "",
+      "price": 425,
+      "images": [
+        "p047.webp"
+      ],
+      "summary": "Lightweight, stylish sandals for warm days and easy movement.",
+      "description": [
+        "Designed for everyday movement with a modern womens sandals finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft upper with supportive sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "b305-12305",
+      "name": "Women's Pointed Mule",
+      "code": "B305-12305",
+      "category": "womens-shoes",
+      "category_label": "Women's Flats & Loafers",
+      "sizes": "37-42",
+      "price": 400,
+      "images": [
+        "p049.webp"
+      ],
+      "summary": "Smart, versatile footwear with a polished everyday finish.",
+      "description": [
+        "Designed for everyday movement with a modern womens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft-touch upper with comfort foam"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p050",
+      "name": "Men's Double-Buckle Slide",
+      "code": "",
+      "category": "mens-slides",
+      "category_label": "Men's Slides",
+      "sizes": "",
+      "price": 575,
+      "images": [
+        "p050.webp"
+      ],
+      "summary": "Clean, easy slides for busy days and relaxed evenings.",
+      "description": [
+        "Designed for everyday movement with a modern mens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Cushioned EVA sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "New"
+    },
+    {
+      "id": "d6600-5",
+      "name": "Women's Bow Flat",
+      "code": "D6600-5",
+      "category": "womens-shoes",
+      "category_label": "Women's Flats & Loafers",
+      "sizes": "37-42",
+      "price": 850,
+      "images": [
+        "p051.webp"
+      ],
+      "summary": "Smart, versatile footwear with a polished everyday finish.",
+      "description": [
+        "Designed for everyday movement with a modern womens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft-touch upper with comfort foam"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "g36008-1601",
+      "name": "Kids Heeled Sandal",
+      "code": "G36008-1601",
+      "category": "kids",
+      "category_label": "Kids",
+      "sizes": "31-36",
+      "price": 600,
+      "images": [
+        "p052.webp"
+      ],
+      "summary": "Active, durable pairs built for play and everyday wear.",
+      "description": [
+        "Designed for everyday movement with a modern kids finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible everyday synthetic upper"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p053",
+      "name": "Women's Ankle-Strap Sandal",
+      "code": "",
+      "category": "womens-sandals",
+      "category_label": "Women's Sandals",
+      "sizes": "",
+      "price": 800,
+      "images": [
+        "p053.webp"
+      ],
+      "summary": "Lightweight, stylish sandals for warm days and easy movement.",
+      "description": [
+        "Designed for everyday movement with a modern womens sandals finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft upper with supportive sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "d6600-8",
+      "name": "Women's Bow Flat",
+      "code": "D6600-8",
+      "category": "womens-shoes",
+      "category_label": "Women's Flats & Loafers",
+      "sizes": "37-42",
+      "price": 975,
+      "images": [
+        "p054.webp"
+      ],
+      "summary": "Smart, versatile footwear with a polished everyday finish.",
+      "description": [
+        "Designed for everyday movement with a modern womens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft-touch upper with comfort foam"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p055",
+      "name": "Women's Ankle-Strap Block Heel",
+      "code": "",
+      "category": "heels",
+      "category_label": "Heels & Wedges",
+      "sizes": "",
+      "price": 950,
+      "images": [
+        "p055.webp"
+      ],
+      "summary": "Elevated silhouettes made for evenings and standout looks.",
+      "description": [
+        "Designed for everyday movement with a modern heels finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Synthetic leather finish"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "New"
+    },
+    {
+      "id": "ga-100-5l",
+      "name": "Kids Mary-Jane Shoe",
+      "code": "GA-100-5L",
+      "category": "kids",
+      "category_label": "Kids",
+      "sizes": "31-36",
+      "price": 925,
+      "images": [
+        "p056.webp"
+      ],
+      "summary": "Active, durable pairs built for play and everyday wear.",
+      "description": [
+        "Designed for everyday movement with a modern kids finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible everyday synthetic upper"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "g66008-1601m",
+      "name": "Kids Heeled Sandal",
+      "code": "G66008-1601M",
+      "category": "kids",
+      "category_label": "Kids",
+      "sizes": "25-30",
+      "price": 800,
+      "images": [
+        "p057.webp"
+      ],
+      "summary": "Active, durable pairs built for play and everyday wear.",
+      "description": [
+        "Designed for everyday movement with a modern kids finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible everyday synthetic upper"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "g56791",
+      "name": "Women's T-Strap Sandal",
+      "code": "G56791",
+      "category": "womens-sandals",
+      "category_label": "Women's Sandals",
+      "sizes": "37-42",
+      "price": 475,
+      "images": [
+        "p058.webp"
+      ],
+      "summary": "Lightweight, stylish sandals for warm days and easy movement.",
+      "description": [
+        "Designed for everyday movement with a modern womens sandals finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft upper with supportive sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "tb045-016-5",
+      "name": "Women's Quilted Slide",
+      "code": "TB045-016-5",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "37-42",
+      "price": 650,
+      "images": [
+        "p059.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "g66008-3011m",
+      "name": "Kids Heeled Sandal",
+      "code": "G66008-3011M",
+      "category": "kids",
+      "category_label": "Kids",
+      "sizes": "25-30",
+      "price": 425,
+      "images": [
+        "p060.webp"
+      ],
+      "summary": "Active, durable pairs built for play and everyday wear.",
+      "description": [
+        "Designed for everyday movement with a modern kids finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible everyday synthetic upper"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "New"
+    },
+    {
+      "id": "ga749-6m",
+      "name": "Kids Mary-Jane Shoe",
+      "code": "GA749-6M",
+      "category": "kids",
+      "category_label": "Kids",
+      "sizes": "25-30",
+      "price": 600,
+      "images": [
+        "p061.webp"
+      ],
+      "summary": "Active, durable pairs built for play and everyday wear.",
+      "description": [
+        "Designed for everyday movement with a modern kids finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible everyday synthetic upper"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "g5622-28",
+      "name": "Women's Court Heel",
+      "code": "G5622-28",
+      "category": "heels",
+      "category_label": "Heels & Wedges",
+      "sizes": "",
+      "price": 575,
+      "images": [
+        "p062.webp"
+      ],
+      "summary": "Elevated silhouettes made for evenings and standout looks.",
+      "description": [
+        "Designed for everyday movement with a modern heels finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Synthetic leather finish"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "g56796",
+      "name": "Women's Slide Sandal",
+      "code": "G56796",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "37-42",
+      "price": 650,
+      "images": [
+        "p063.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "h58-1641",
+      "name": "Kids Mary-Jane Shoe",
+      "code": "H58-1641",
+      "category": "kids",
+      "category_label": "Kids",
+      "sizes": "31-36",
+      "price": 700,
+      "images": [
+        "p064.webp"
+      ],
+      "summary": "Active, durable pairs built for play and everyday wear.",
+      "description": [
+        "Designed for everyday movement with a modern kids finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible everyday synthetic upper"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "ga961-13",
+      "name": "Women's Buckle Slide",
+      "code": "GA961-13",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "37-42",
+      "price": 900,
+      "images": [
+        "p065.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "New"
+    },
+    {
+      "id": "y-09c",
+      "name": "Fur Slide",
+      "code": "Y-09C",
+      "category": "fur-slippers",
+      "category_label": "Fur Slippers",
+      "sizes": "",
+      "price": 775,
+      "images": [
+        "p066.webp"
+      ],
+      "summary": "Soft comfort for slow mornings and quick errands.",
+      "description": [
+        "Designed for everyday movement with a modern fur slippers finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft plush upper"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "y-06",
+      "name": "Fur Slide",
+      "code": "Y-06",
+      "category": "fur-slippers",
+      "category_label": "Fur Slippers",
+      "sizes": "",
+      "price": 850,
+      "images": [
+        "p067.webp"
+      ],
+      "summary": "Soft comfort for slow mornings and quick errands.",
+      "description": [
+        "Designed for everyday movement with a modern fur slippers finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft plush upper"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "mb-1a",
+      "name": "Men's Woven Clog",
+      "code": "MB-1A",
+      "category": "mens-shoes",
+      "category_label": "Men's Shoes",
+      "sizes": "40-45",
+      "price": 525,
+      "images": [
+        "p068.webp"
+      ],
+      "summary": "Tailored lines and everyday practicality for the modern man.",
+      "description": [
+        "Designed for everyday movement with a modern mens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Leather-look upper"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "sm2002",
+      "name": "Women's T-Strap Clog",
+      "code": "SM2002",
+      "category": "womens-shoes",
+      "category_label": "Women's Flats & Loafers",
+      "sizes": "37-42",
+      "price": 600,
+      "images": [
+        "p069.webp"
+      ],
+      "summary": "Smart, versatile footwear with a polished everyday finish.",
+      "description": [
+        "Designed for everyday movement with a modern womens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft-touch upper with comfort foam"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "la-n1016",
+      "name": "Men's Loafer",
+      "code": "LA-N1016",
+      "category": "mens-shoes",
+      "category_label": "Men's Shoes",
+      "sizes": "",
+      "price": 675,
+      "images": [
+        "p070.webp"
+      ],
+      "summary": "Tailored lines and everyday practicality for the modern man.",
+      "description": [
+        "Designed for everyday movement with a modern mens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Leather-look upper"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "New"
+    },
+    {
+      "id": "y-16c",
+      "name": "Fur Slide",
+      "code": "Y-16C",
+      "category": "fur-slippers",
+      "category_label": "Fur Slippers",
+      "sizes": "",
+      "price": 650,
+      "images": [
+        "p071.webp"
+      ],
+      "summary": "Soft comfort for slow mornings and quick errands.",
+      "description": [
+        "Designed for everyday movement with a modern fur slippers finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft plush upper"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "y-01c",
+      "name": "Fur Cross Slide",
+      "code": "Y-01C",
+      "category": "fur-slippers",
+      "category_label": "Fur Slippers",
+      "sizes": "",
+      "price": 825,
+      "images": [
+        "p072.webp"
+      ],
+      "summary": "Soft comfort for slow mornings and quick errands.",
+      "description": [
+        "Designed for everyday movement with a modern fur slippers finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft plush upper"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "sm2001",
+      "name": "Women's Double-Buckle Clog",
+      "code": "SM2001",
+      "category": "womens-shoes",
+      "category_label": "Women's Flats & Loafers",
+      "sizes": "37-42",
+      "price": 600,
+      "images": [
+        "p073.webp"
+      ],
+      "summary": "Smart, versatile footwear with a polished everyday finish.",
+      "description": [
+        "Designed for everyday movement with a modern womens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft-touch upper with comfort foam"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "m01-127",
+      "name": "Women's Cross-Strap Slide",
+      "code": "M01-127",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "",
+      "price": 575,
+      "images": [
+        "p074.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p2168-0474",
+      "name": "Women's Thong Slide",
+      "code": "P2168-0474",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "37-42",
+      "price": 650,
+      "images": [
+        "p075.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "New"
+    },
+    {
+      "id": "y-13c",
+      "name": "Fur Slide",
+      "code": "Y-13C",
+      "category": "fur-slippers",
+      "category_label": "Fur Slippers",
+      "sizes": "",
+      "price": 600,
+      "images": [
+        "p076.webp"
+      ],
+      "summary": "Soft comfort for slow mornings and quick errands.",
+      "description": [
+        "Designed for everyday movement with a modern fur slippers finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft plush upper"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "sp-7",
+      "name": "Women's Bow Loafer",
+      "code": "SP-7",
+      "category": "womens-shoes",
+      "category_label": "Women's Flats & Loafers",
+      "sizes": "",
+      "price": 600,
+      "images": [
+        "p077.webp"
+      ],
+      "summary": "Smart, versatile footwear with a polished everyday finish.",
+      "description": [
+        "Designed for everyday movement with a modern womens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft-touch upper with comfort foam"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "b8140-1364d",
+      "name": "Women's Mule Flat",
+      "code": "B8140-1364D",
+      "category": "womens-shoes",
+      "category_label": "Women's Flats & Loafers",
+      "sizes": "37-42",
+      "price": 975,
+      "images": [
+        "p078.webp"
+      ],
+      "summary": "Smart, versatile footwear with a polished everyday finish.",
+      "description": [
+        "Designed for everyday movement with a modern womens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft-touch upper with comfort foam"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p2168-12359",
+      "name": "Women's Letter Slide",
+      "code": "P2168-12359",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "37-42",
+      "price": 650,
+      "images": [
+        "p079.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "sa790-3l",
+      "name": "Kids Heeled Sandal",
+      "code": "SA790-3L",
+      "category": "kids",
+      "category_label": "Kids",
+      "sizes": "31-36",
+      "price": 625,
+      "images": [
+        "p080.webp"
+      ],
+      "summary": "Active, durable pairs built for play and everyday wear.",
+      "description": [
+        "Designed for everyday movement with a modern kids finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible everyday synthetic upper"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "New"
+    },
+    {
+      "id": "g790-1m",
+      "name": "Kids Heeled Sandal",
+      "code": "G790-1M",
+      "category": "kids",
+      "category_label": "Kids",
+      "sizes": "25-30",
+      "price": 600,
+      "images": [
+        "p081.webp"
+      ],
+      "summary": "Active, durable pairs built for play and everyday wear.",
+      "description": [
+        "Designed for everyday movement with a modern kids finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible everyday synthetic upper"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "da1869l-8l",
+      "name": "Kids Flat Shoe",
+      "code": "DA1869L-8L",
+      "category": "kids",
+      "category_label": "Kids",
+      "sizes": "31-36",
+      "price": 675,
+      "images": [
+        "p082.webp"
+      ],
+      "summary": "Active, durable pairs built for play and everyday wear.",
+      "description": [
+        "Designed for everyday movement with a modern kids finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible everyday synthetic upper"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p083",
+      "name": "Women's Loafer",
+      "code": "",
+      "category": "womens-shoes",
+      "category_label": "Women's Flats & Loafers",
+      "sizes": "",
+      "price": 850,
+      "images": [
+        "p083.webp"
+      ],
+      "summary": "Smart, versatile footwear with a polished everyday finish.",
+      "description": [
+        "Designed for everyday movement with a modern womens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft-touch upper with comfort foam"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "1937-06",
+      "name": "Women's Chunky Loafer",
+      "code": "1937-06",
+      "category": "womens-shoes",
+      "category_label": "Women's Flats & Loafers",
+      "sizes": "",
+      "price": 625,
+      "images": [
+        "p084.webp"
+      ],
+      "summary": "Smart, versatile footwear with a polished everyday finish.",
+      "description": [
+        "Designed for everyday movement with a modern womens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft-touch upper with comfort foam"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p085",
+      "name": "Platform Sneaker",
+      "code": "",
+      "category": "womens-shoes",
+      "category_label": "Women's Flats & Loafers",
+      "sizes": "37-42",
+      "price": 400,
+      "images": [
+        "p085.webp"
+      ],
+      "summary": "Smart, versatile footwear with a polished everyday finish.",
+      "description": [
+        "Designed for everyday movement with a modern womens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft-touch upper with comfort foam"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "New"
+    },
+    {
+      "id": "p086",
+      "name": "Platform Sneaker",
+      "code": "",
+      "category": "womens-shoes",
+      "category_label": "Women's Flats & Loafers",
+      "sizes": "37-42",
+      "price": 575,
+      "images": [
+        "p086.webp"
+      ],
+      "summary": "Smart, versatile footwear with a polished everyday finish.",
+      "description": [
+        "Designed for everyday movement with a modern womens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft-touch upper with comfort foam"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "tb045-016d-2",
+      "name": "Women's Quilted Slide",
+      "code": "TB045-016D-2",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "37-42",
+      "price": 650,
+      "images": [
+        "p087.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "g5679-02",
+      "name": "Women's Heeled Sandal",
+      "code": "G5679-02",
+      "category": "heels",
+      "category_label": "Heels & Wedges",
+      "sizes": "37-42",
+      "price": 825,
+      "images": [
+        "p088.webp"
+      ],
+      "summary": "Elevated silhouettes made for evenings and standout looks.",
+      "description": [
+        "Designed for everyday movement with a modern heels finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Synthetic leather finish"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "ga743-23",
+      "name": "Women's Heeled Sandal",
+      "code": "GA743-23",
+      "category": "heels",
+      "category_label": "Heels & Wedges",
+      "sizes": "37-42",
+      "price": 600,
+      "images": [
+        "p089.webp"
+      ],
+      "summary": "Elevated silhouettes made for evenings and standout looks.",
+      "description": [
+        "Designed for everyday movement with a modern heels finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Synthetic leather finish"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "sy-72",
+      "name": "Women's Monogram Loafer",
+      "code": "SY-72",
+      "category": "womens-shoes",
+      "category_label": "Women's Flats & Loafers",
+      "sizes": "",
+      "price": 975,
+      "images": [
+        "p090.webp"
+      ],
+      "summary": "Smart, versatile footwear with a polished everyday finish.",
+      "description": [
+        "Designed for everyday movement with a modern womens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Soft-touch upper with comfort foam"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "New"
+    },
+    {
+      "id": "lux-1923-13",
+      "name": "Men's Court Sneaker",
+      "code": "LUX-1923-13",
+      "category": "mens-shoes",
+      "category_label": "Men's Shoes",
+      "sizes": "40-45",
+      "price": 950,
+      "images": [
+        "p091.webp"
+      ],
+      "summary": "Tailored lines and everyday practicality for the modern man.",
+      "description": [
+        "Designed for everyday movement with a modern mens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Leather-look upper"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p2168-12556",
+      "name": "Women's Buckle Slide",
+      "code": "P2168-12556",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "37-42",
+      "price": 525,
+      "images": [
+        "p092.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "lux-1923-15",
+      "name": "Men's Court Sneaker",
+      "code": "LUX-1923-15",
+      "category": "mens-shoes",
+      "category_label": "Men's Shoes",
+      "sizes": "40-45",
+      "price": 500,
+      "images": [
+        "p093.webp"
+      ],
+      "summary": "Tailored lines and everyday practicality for the modern man.",
+      "description": [
+        "Designed for everyday movement with a modern mens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Leather-look upper"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p2168-13052",
+      "name": "Women's Bow Slide",
+      "code": "P2168-13052",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "37-42",
+      "price": 775,
+      "images": [
+        "p094.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p2168-0994",
+      "name": "Women's Strappy Slide",
+      "code": "P2168-0994",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "37-42",
+      "price": 650,
+      "images": [
+        "p095.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "New"
+    },
+    {
+      "id": "p2165-10049",
+      "name": "Women's Buckle Slide",
+      "code": "P2165-10049",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "37-42",
+      "price": 625,
+      "images": [
+        "p096.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p097",
+      "name": "Women's Crystal Heeled Sandal",
+      "code": "",
+      "category": "heels",
+      "category_label": "Heels & Wedges",
+      "sizes": "36-41",
+      "price": 700,
+      "images": [
+        "p097.webp"
+      ],
+      "summary": "Elevated silhouettes made for evenings and standout looks.",
+      "description": [
+        "Designed for everyday movement with a modern heels finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Synthetic leather finish"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p098",
+      "name": "Men's Horsebit Loafer",
+      "code": "",
+      "category": "mens-shoes",
+      "category_label": "Men's Shoes",
+      "sizes": "",
+      "price": 875,
+      "images": [
+        "p098.webp"
+      ],
+      "summary": "Tailored lines and everyday practicality for the modern man.",
+      "description": [
+        "Designed for everyday movement with a modern mens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Leather-look upper"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "78-1",
+      "name": "Women's Slide Sandal",
+      "code": "78-1",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "",
+      "price": 650,
+      "images": [
+        "p099.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p100",
+      "name": "Espadrille Wedge Sandal",
+      "code": "",
+      "category": "heels",
+      "category_label": "Heels & Wedges",
+      "sizes": "",
+      "price": 825,
+      "images": [
+        "p100.webp"
+      ],
+      "summary": "Elevated silhouettes made for evenings and standout looks.",
+      "description": [
+        "Designed for everyday movement with a modern heels finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Synthetic leather finish"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "New"
+    },
+    {
+      "id": "p101",
+      "name": "Men's Loafer",
+      "code": "",
+      "category": "mens-shoes",
+      "category_label": "Men's Shoes",
+      "sizes": "",
+      "price": 600,
+      "images": [
+        "p101.webp"
+      ],
+      "summary": "Tailored lines and everyday practicality for the modern man.",
+      "description": [
+        "Designed for everyday movement with a modern mens shoes finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Leather-look upper"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p102",
+      "name": "Women's Ankle-Strap Heel",
+      "code": "",
+      "category": "heels",
+      "category_label": "Heels & Wedges",
+      "sizes": "",
+      "price": 575,
+      "images": [
+        "p102.webp"
+      ],
+      "summary": "Elevated silhouettes made for evenings and standout looks.",
+      "description": [
+        "Designed for everyday movement with a modern heels finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Synthetic leather finish"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p103",
+      "name": "Women's Ankle-Strap Heel",
+      "code": "",
+      "category": "heels",
+      "category_label": "Heels & Wedges",
+      "sizes": "",
+      "price": 950,
+      "images": [
+        "p103.webp"
+      ],
+      "summary": "Elevated silhouettes made for evenings and standout looks.",
+      "description": [
+        "Designed for everyday movement with a modern heels finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Synthetic leather finish"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "p104",
+      "name": "Platform Wedge Sandal",
+      "code": "",
+      "category": "heels",
+      "category_label": "Heels & Wedges",
+      "sizes": "",
+      "price": 525,
+      "images": [
+        "p104.webp"
+      ],
+      "summary": "Elevated silhouettes made for evenings and standout looks.",
+      "description": [
+        "Designed for everyday movement with a modern heels finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Synthetic leather finish"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "hs-5614",
+      "name": "Women's Slide Sandal",
+      "code": "HS-5614",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "37-41",
+      "price": 400,
+      "images": [
+        "p105.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "New"
+    },
+    {
+      "id": "p106",
+      "name": "Espadrille Wedge Mule",
+      "code": "",
+      "category": "heels",
+      "category_label": "Heels & Wedges",
+      "sizes": "",
+      "price": 575,
+      "images": [
+        "p106.webp"
+      ],
+      "summary": "Elevated silhouettes made for evenings and standout looks.",
+      "description": [
+        "Designed for everyday movement with a modern heels finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Synthetic leather finish"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "hs-5739",
+      "name": "Women's Monogram Slide",
+      "code": "HS-5739",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "37-41",
+      "price": 650,
+      "images": [
+        "p107.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "hs-5706",
+      "name": "Women's Monogram Slide",
+      "code": "HS-5706",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "37-41",
+      "price": 625,
+      "images": [
+        "p108.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "hs-5867",
+      "name": "Women's Monogram Slide",
+      "code": "HS-5867",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "37-41",
+      "price": 900,
+      "images": [
+        "p109.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    },
+    {
+      "id": "hs-5903",
+      "name": "Women's Slide Sandal",
+      "code": "HS-5903",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "37-41",
+      "price": 675,
+      "images": [
+        "p110.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "New"
+    },
+    {
+      "id": "hs-5931",
+      "name": "Women's Monogram Slide",
+      "code": "HS-5931",
+      "category": "womens-slides",
+      "category_label": "Women's Slides",
+      "sizes": "37-41",
+      "price": 650,
+      "images": [
+        "p111.webp"
+      ],
+      "summary": "Easy slip-on comfort for daily wear and laid-back styling.",
+      "description": [
+        "Designed for everyday movement with a modern womens slides finish.",
+        "Made for comfort, durability and easy styling from workdays to weekends."
+      ],
+      "specs": [
+        {
+          "label": "Material",
+          "value": "Flexible foam sole"
+        },
+        {
+          "label": "Fit",
+          "value": "True to size; easy everyday comfort"
+        },
+        {
+          "label": "Care",
+          "value": "Wipe clean with a soft damp cloth"
+        }
+      ],
+      "badge": "Popular"
+    }
+  ]
+}

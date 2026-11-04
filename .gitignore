@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+.vercel/
+.env
+_originals/
+_work/
+instance/
+.env.*
+!.env.example

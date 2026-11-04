@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Create account — {{ site.name or 'FootMart' }}{% endblock %}
+
+{% block body %}
+<section class="account-auth-wrap wrap">
+  <div class="account-auth-card">
+    <div class="account-auth-intro">
+      <span class="auth-badge">Join FootMart</span>
+      <h1>Create your account</h1>
+      <p>Save your details and delivery addresses for easier shopping next time.</p>
+    </div>
+    {% if google_enabled %}
+    <a class="google-signin" href="{{ url_for('google_login', next=next_url) }}">
+      <span class="google-mark" aria-hidden="true">G</span>
+      <span>Continue with Google</span>
+    </a>
+    {% else %}
+    <button class="google-signin is-unavailable" type="button" disabled>
+      <span class="google-mark" aria-hidden="true">G</span>
+      <span>Google sign-in setup required</span>
+    </button>
+    <p class="google-setup-note">
+      Add GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET to the server environment. Register this callback in your Google OAuth client:
+      <code>{{ request.url_root.rstrip('/') }}{{ url_for('google_callback') }}</code>
+    </p>
+    {% endif %}
+    <div class="auth-divider"><span>or create an account with your details</span></div>
+    <form class="account-form" method="post" action="{{ url_for('register') }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+      <input type="hidden" name="next" value="{{ next_url }}">
+      <label>
+        Full name
+        <input type="text" name="full_name" autocomplete="name" maxlength="100" required>
+      </label>
+      <label>
+        Phone number
+        <input type="tel" name="phone" autocomplete="tel" maxlength="24" placeholder="e.g. 0712 345 678" required>
+      </label>
+      <label>
+        Email <span class="field-optional">Optional</span>
+        <input type="email" name="email" autocomplete="email" maxlength="254">
+      </label>
+      <label>
+        Password
+        <input type="password" name="password" autocomplete="new-password" minlength="8" maxlength="256" required>
+        <small>Use at least 8 characters.</small>
+      </label>
+      <label>
+        Confirm password
+        <input type="password" name="password_confirm" autocomplete="new-password" minlength="8" maxlength="256" required>
+      </label>
+      <button class="btn btn-primary btn-block" type="submit">Create account</button>
+    </form>
+    <p class="account-auth-switch">Already have an account? <a href="{{ url_for('login', next=next_url) }}">Sign in</a></p>
+  </div>
+</section>
+{% endblock %}

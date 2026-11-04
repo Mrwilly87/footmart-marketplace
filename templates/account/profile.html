@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% block title %}My account — {{ site.name or 'FootMart' }}{% endblock %}
+
+{% block body %}
+<section class="account-page wrap">
+  <header class="account-welcome">
+    <div>
+      <p class="mini-label">FootMart account</p>
+      <h1>Hello, {{ current_user.full_name.split()[0] }}</h1>
+      <p>Manage your personal information, delivery addresses, and account security.</p>
+    </div>
+    <form method="post" action="{{ url_for('logout') }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+      <button class="btn btn-ghost" type="submit">Sign out</button>
+    </form>
+  </header>
+
+  <div class="account-layout">
+    <nav class="account-nav" aria-label="Account sections">
+      <a class="is-active" href="#personal">Personal details</a>
+      <a href="#addresses">Delivery addresses <span>{{ addresses | length }}</span></a>
+      <a href="#orders">My orders</a>
+      <a href="#security">Account security</a>
+    </nav>
+
+    <div class="account-content">
+      <section class="account-panel" id="personal">
+        <div class="account-panel-head">
+          <div>
+            <p class="mini-label">Your account</p>
+            <h2>Personal details</h2>
+            <span class="account-provider-tag">{{ 'Google sign-in connected' if current_user.google_sub else 'Email and password account' }}</span>
+          </div>
+        </div>
+        <form class="account-form account-form-grid" method="post" action="{{ url_for('update_profile') }}">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+          <label>
+            Full name
+            <input type="text" name="full_name" value="{{ current_user.full_name }}" maxlength="100" required>
+          </label>
+          <label>
+            Phone number
+            <input type="tel" name="phone" value="{{ current_user.phone }}" maxlength="24" required>
+          </label>
+          <label>
+            Email <span class="field-optional">Optional</span>
+            <input type="email" name="email" value="{{ current_user.email or '' }}" maxlength="254">
+          </label>
+          <div class="account-form-actions"><button class="btn btn-primary" type="submit">Save changes</button></div>
+        </form>
+      </section>
+
+      <section class="account-panel" id="addresses">
+        <div class="account-panel-head">
+          <div><p class="mini-label">For quicker checkout</p><h2>Delivery addresses</h2></div>
+        </div>
+        {% if addresses %}
+        <ul class="address-list">
+          {% for address in addresses %}
+          <li class="address-card">
+            <div class="address-card-copy">
+              <span class="address-tag">{{ address.label }}</span>
+              <strong>{{ address.recipient_name }}</strong>
+              <span>{{ address.phone }}</span>
+              <span>{{ address.location }}</span>
+              {% if address.delivery_note %}<small>{{ address.delivery_note }}</small>{% endif %}
+            </div>
+            <form method="post" action="{{ url_for('delete_address', address_id=address.id) }}">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+              <button class="text-button text-danger" type="submit">Remove</button>
+            </form>
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p class="account-empty">No saved addresses yet. Add one below for a faster checkout.</p>
+        {% endif %}
+        <form class="account-form address-form" method="post" action="{{ url_for('add_address') }}">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+          <h3>Add a delivery address</h3>
+          <div class="account-form-grid">
+            <label>
+              Address label
+              <input type="text" name="label" placeholder="Home, Work" maxlength="40" required>
+            </label>
+            <label>
+              Recipient name
+              <input type="text" name="recipient_name" value="{{ current_user.full_name }}" maxlength="100" required>
+            </label>
+            <label>
+              Contact phone
+              <input type="tel" name="phone" value="{{ current_user.phone }}" maxlength="24" required>
+            </label>
+            <label>
+              Town, estate, street or landmark
+              <input type="text" name="location" maxlength="300" required>
+            </label>
+            <label class="field-span">
+              Delivery note <span class="field-optional">Optional</span>
+              <textarea name="delivery_note" rows="2" maxlength="500" placeholder="Directions or other helpful details"></textarea>
+            </label>
+          </div>
+          <button class="btn btn-ghost" type="submit">Save address</button>
+        </form>
+      </section>
+
+      <section class="account-panel" id="orders">
+        <div class="account-panel-head">
+          <div><p class="mini-label">Shopping activity</p><h2>My orders</h2></div>
+        </div>
+        <div class="account-empty">
+          <strong>No account orders to show yet</strong>
+          <p>Orders are currently sent to the store through WhatsApp and are not saved to order history. Contact the store directly for an update on an order request.</p>
+          {% if site.whatsapp %}<a class="btn btn-ghost btn-sm" href="https://wa.me/{{ site.whatsapp }}">Contact customer support</a>{% endif %}
+        </div>
+      </section>
+
+      <section class="account-panel" id="security">
+        <div class="account-panel-head">
+          <div><p class="mini-label">Keep your account safe</p><h2>Change password</h2></div>
+        </div>
+        <form class="account-form account-form-grid" method="post" action="{{ url_for('change_password') }}">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+          <label class="field-span">
+            Current password
+            <input type="password" name="current_password" autocomplete="current-password" required>
+          </label>
+          <label>
+            New password
+            <input type="password" name="new_password" autocomplete="new-password" minlength="8" maxlength="256" required>
+          </label>
+          <label>
+            Confirm new password
+            <input type="password" name="password_confirm" autocomplete="new-password" minlength="8" maxlength="256" required>
+          </label>
+          <div class="account-form-actions"><button class="btn btn-primary" type="submit">Update password</button></div>
+        </form>
+      </section>
+    </div>
+  </div>
+</section>
+{% endblock %}

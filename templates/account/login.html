@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Sign in — {{ site.name or 'FootMart' }}{% endblock %}
+
+{% block body %}
+<section class="account-auth-wrap wrap">
+  <div class="account-auth-card">
+    <div class="account-auth-intro">
+      <span class="auth-badge">Your FootMart account</span>
+      <h1>Welcome back</h1>
+      <p>Sign in to manage your profile and saved delivery addresses.</p>
+    </div>
+    {% if google_enabled %}
+    <a class="google-signin" href="{{ url_for('google_login', next=next_url) }}">
+      <span class="google-mark" aria-hidden="true">G</span>
+      <span>Continue with Google</span>
+    </a>
+    {% else %}
+    <button class="google-signin is-unavailable" type="button" disabled>
+      <span class="google-mark" aria-hidden="true">G</span>
+      <span>Google sign-in setup required</span>
+    </button>
+    <p class="google-setup-note">
+      Add GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET to the server environment. Register this callback in your Google OAuth client:
+      <code>{{ request.url_root.rstrip('/') }}{{ url_for('google_callback') }}</code>
+    </p>
+    {% endif %}
+    <div class="auth-divider"><span>or sign in with your password</span></div>
+    <form class="account-form" method="post" action="{{ url_for('login') }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+      <input type="hidden" name="next" value="{{ next_url }}">
+      <label>
+        Phone number or email
+        <input type="text" name="identifier" autocomplete="username" required autofocus>
+      </label>
+      <label>
+        Password
+        <input type="password" name="password" autocomplete="current-password" required>
+      </label>
+      <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+    </form>
+    <p class="account-auth-switch">New to FootMart? <a href="{{ url_for('register', next=next_url) }}">Create an account</a></p>
+    <p class="account-auth-footnote">Forgot your password? Contact customer support so we can help verify your account.</p>
+  </div>
+</section>
+{% endblock %}
