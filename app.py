@@ -1,3 +1,5 @@
+import hashlib
+import hmac
 import json
 import logging
 import os
@@ -116,6 +118,18 @@ if google_enabled:
         server_metadata_url="https://accounts.google.com/.well-known/openid-configuration",
         client_kwargs={"scope": "openid email profile"},
     )
+
+ADMIN_EMAIL = os.environ.get("ADMIN_EMAIL", "").strip().lower()
+ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "")
+ADMIN_STATUSES = (
+    "awaiting_whatsapp",
+    "confirmed",
+    "processing",
+    "shipped",
+    "delivered",
+    "cancelled",
+)
+
 
 def get_db():
     if "db" not in g:
@@ -340,6 +354,30 @@ def login_required(view):
         return view(*args, **kwargs)
 
     return wrapped_view
+
+
+def admin_required(view):
+    @wraps(view)
+    def wrapped_view(*args, **kwargs):
+        if (
+            session.get("is_admin") is not True
+            or not ADMIN_EMAIL
+            or not ADMIN_PASSWORD
+            or not secrets.compare_digest(
+                session.get("admin_auth_fingerprint", ""),
+                admin_auth_fingerprint(),
+            )
+        ):
+            return redirect(url_for("admin_login", next=request.path))
+        return view(*args, **kwargs)
+
+    return wrapped_view
+
+
+def admin_auth_fingerprint():
+    credentials = f"{ADMIN_EMAIL}\0{ADMIN_PASSWORD}".encode("utf-8")
+    key = app.config["SECRET_KEY"].encode("utf-8")
+    return hmac.new(key, credentials, hashlib.sha256).hexdigest()
 
 
 def safe_next_url(target):
@@ -743,6 +781,107 @@ def track_order(tracking_code):
         order=order,
         order_items=json.loads(order["items_json"]),
     )
+
+
+@app.route("/admin", methods=["GET"])
+@admin_required
+def admin_dashboard():
+    orders = get_db().execute(
+        """
+        SELECT tracking_code, customer_name, customer_phone, delivery_location,
+               delivery_note, payment_method, items_json, item_count, subtotal,
+               delivery_fee, total, status, created_at
+        FROM orders
+        ORDER BY created_at DESC
+        LIMIT 100
+        """
+    ).fetchall()
+    order_count = get_db().execute(
+        "SELECT COUNT(*) AS count FROM orders"
+    ).fetchone()["count"]
+    return render_template(
+        "admin/dashboard.html",
+        site=site(),
+        categories=categories(),
+        orders=[
+            {**dict(order), "items": json.loads(order["items_json"])}
+            for order in orders
+        ],
+        order_count=order_count,
+        order_statuses=ADMIN_STATUSES,
+    )
+
+
+@app.route("/admin/login", methods=["GET", "POST"])
+def admin_login():
+    next_url = safe_next_url(request.values.get("next"))
+    if session.get("is_admin") is True:
+        return redirect(next_url or url_for("admin_dashboard"))
+
+    if request.method == "POST":
+        if not valid_csrf():
+            abort(400, description="Invalid form token. Refresh the page and try again.")
+        if not ADMIN_EMAIL or not ADMIN_PASSWORD:
+            logger.error("Admin login attempted before ADMIN_EMAIL and ADMIN_PASSWORD were configured")
+            flash("Admin login is not configured. Set ADMIN_EMAIL and ADMIN_PASSWORD in the server environment.", "error")
+        else:
+            email = request.form.get("email", "").strip().lower()
+            password = request.form.get("password", "")
+            email_matches = len(email) <= 254 and secrets.compare_digest(
+                email.encode("utf-8"), ADMIN_EMAIL.encode("utf-8")
+            )
+            password_matches = len(password) <= 256 and secrets.compare_digest(
+                password.encode("utf-8"), ADMIN_PASSWORD.encode("utf-8")
+            )
+            if not email_matches or not password_matches:
+                flash("We couldn't sign you in with those details. Check them and try again.", "error")
+            else:
+                session.clear()
+                session["is_admin"] = True
+                session["admin_auth_fingerprint"] = admin_auth_fingerprint()
+                session.permanent = True
+                flash("You are signed in to the admin portal.", "success")
+                return redirect(next_url or url_for("admin_dashboard"))
+
+    return render_template(
+        "admin/login.html",
+        site=site(),
+        categories=categories(),
+        next_url=next_url or "",
+        admin_configured=bool(ADMIN_EMAIL and ADMIN_PASSWORD),
+    )
+
+
+@app.route("/admin/logout", methods=["POST"])
+@admin_required
+def admin_logout():
+    if not valid_csrf():
+        abort(400, description="Invalid form token. Refresh the page and try again.")
+    session.clear()
+    flash("You have been signed out of the admin portal.", "success")
+    return redirect(url_for("admin_login"))
+
+
+@app.route("/admin/orders/<tracking_code>/status", methods=["POST"])
+@admin_required
+def admin_update_order_status(tracking_code):
+    if not valid_csrf():
+        abort(400, description="Invalid form token. Refresh the page and try again.")
+    if not re.fullmatch(r"[A-Za-z0-9_-]{20,64}", tracking_code):
+        abort(404)
+    status = request.form.get("status", "")
+    if status not in ADMIN_STATUSES:
+        abort(400, description="Select a valid order status.")
+    cursor = get_db().execute(
+        "UPDATE orders SET status = ? WHERE tracking_code = ?",
+        (status, tracking_code),
+    )
+    get_db().commit()
+    if cursor.rowcount:
+        flash("Order status updated.", "success")
+    else:
+        flash("That order could not be found.", "error")
+    return redirect(url_for("admin_dashboard"))
 
 
 @app.route("/account/login", methods=["GET", "POST"])

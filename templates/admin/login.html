@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Admin sign in — {{ site.name or 'FootMart' }}{% endblock %}
+
+{% block body %}
+<section class="account-auth-wrap wrap">
+  <div class="account-auth-card">
+    <div class="account-auth-intro">
+      <span class="auth-badge">FootMart administration</span>
+      <h1>Admin sign in</h1>
+      <p>Sign in to review orders and update their status.</p>
+    </div>
+    {% if admin_configured %}
+    <form class="account-form" method="post" action="{{ url_for('admin_login') }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+      <input type="hidden" name="next" value="{{ next_url }}">
+      <label>
+        Admin email
+        <input type="email" name="email" autocomplete="username" required autofocus>
+      </label>
+      <label>
+        Password
+        <input type="password" name="password" autocomplete="current-password" maxlength="256" required>
+      </label>
+      <button class="btn btn-primary btn-block" type="submit">Sign in to admin</button>
+    </form>
+    {% else %}
+    <p class="admin-setup-note">Admin sign-in is unavailable until <code>ADMIN_EMAIL</code> and <code>ADMIN_PASSWORD</code> are configured in the server environment.</p>
+    {% endif %}
+    <p class="account-auth-switch"><a href="{{ url_for('index') }}">Return to FootMart</a></p>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Admin orders — {{ site.name or 'FootMart' }}{% endblock %}
+
+{% block body %}
+<section class="admin-page wrap">
+  <header class="admin-welcome">
+    <div>
+      <p class="mini-label">FootMart administration</p>
+      <h1>Orders</h1>
+      <p>{{ order_count }} total order{{ '' if order_count == 1 else 's' }} · Showing the latest {{ orders | length }}</p>
+    </div>
+    <form method="post" action="{{ url_for('admin_logout') }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+      <button class="btn btn-ghost" type="submit">Sign out</button>
+    </form>
+  </header>
+
+  {% if orders %}
+  <div class="admin-orders">
+    {% for order in orders %}
+    <article class="admin-order-card">
+      <header class="admin-order-head">
+        <div>
+          <p class="mini-label">Order · {{ order.created_at }}</p>
+          <h2>{{ order.customer_name }}</h2>
+          <a href="{{ url_for('track_order', tracking_code=order.tracking_code) }}">Tracking code {{ order.tracking_code }}</a>
+        </div>
+        <span class="order-status">{{ order.status | replace('_', ' ') | title }}</span>
+      </header>
+
+      <div class="admin-order-details">
+        <p><strong>Phone</strong><a href="tel:{{ order.customer_phone }}">{{ order.customer_phone }}</a></p>
+        <p><strong>Delivery</strong><span>{{ order.delivery_location }}{% if order.delivery_note %} · {{ order.delivery_note }}{% endif %}</span></p>
+        <p><strong>Payment</strong><span>{{ order.payment_method }}</span></p>
+        <p><strong>Total</strong><span>{% if order.total is not none %}KSh {{ "{:,.0f}".format(order.total) }}{% else %}Price on request{% endif %}</span></p>
+      </div>
+
+      <ul class="admin-order-items">
+        {% for item in order["items"] %}
+        <li>{{ item.name }}{% if item.size %} · Size {{ item.size }}{% endif %} · Qty {{ item.qty }}{% if item.unit_price is not none %} · KSh {{ "{:,.0f}".format(item.unit_price) }} each{% endif %}</li>
+        {% endfor %}
+      </ul>
+
+      <form class="admin-status-form" method="post" action="{{ url_for('admin_update_order_status', tracking_code=order.tracking_code) }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <label>
+          Update status
+          <select name="status" required>
+            {% for status in order_statuses %}
+            <option value="{{ status }}" {{ 'selected' if order.status == status }}>{{ status | replace('_', ' ') | title }}</option>
+            {% endfor %}
+          </select>
+        </label>
+        <button class="btn btn-primary btn-sm" type="submit">Save status</button>
+      </form>
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="account-empty">
+    <strong>No orders yet</strong>
+    <p>New customer orders will appear here.</p>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

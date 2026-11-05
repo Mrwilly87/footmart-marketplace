@@ -419,15 +419,36 @@ a.google-signin:hover { background: #fafafa; border-color: #9da3aa; box-shadow: 
 .account-form { display: grid; gap: 16px; }
 .account-form label { display: grid; gap: 7px; color: var(--ink); font-size: 13px; font-weight: 650; }
 .account-form input,
-.account-form textarea { width: 100%; min-width: 0; border: 1px solid var(--line-strong); border-radius: 11px; background: #fff; padding: 11px 13px; color: var(--ink); font: inherit; font-weight: 400; }
+.account-form textarea,
+.account-form select { width: 100%; min-width: 0; border: 1px solid var(--line-strong); border-radius: 11px; background: #fff; padding: 11px 13px; color: var(--ink); font: inherit; font-weight: 400; }
 .account-form input:focus,
-.account-form textarea:focus { outline: 2px solid rgba(255,106,43,.12); border-color: var(--accent); }
+.account-form textarea:focus,
+.account-form select:focus { outline: 2px solid rgba(255,106,43,.12); border-color: var(--accent); }
 .account-form small { color: var(--muted); font-size: 11px; font-weight: 400; }
 .field-optional { color: var(--muted-dim); font-size: 11px; font-weight: 400; }
 .account-auth-switch { margin: 20px 0 0; color: var(--muted); text-align: center; font-size: 13px; }
 .account-auth-switch a { color: var(--accent); font-weight: 700; }
 .account-auth-footnote { margin: 14px 0 0; color: var(--muted-dim); text-align: center; font-size: 11px; line-height: 1.5; }
 .account-page { padding-block: 42px 76px; }
+.admin-page { padding-block: 42px 76px; }
+.admin-welcome { display: flex; justify-content: space-between; align-items: center; gap: 18px; margin-bottom: 24px; padding: 26px 30px; border: 1px solid var(--line); border-radius: 22px; background: linear-gradient(110deg, #fff, #fff1e8); }
+.admin-welcome h1 { margin: 8px 0; font-size: clamp(28px, 4vw, 40px); }
+.admin-welcome p:last-child { margin: 0; color: var(--muted); }
+.admin-orders { display: grid; gap: 14px; }
+.admin-order-card { min-width: 0; padding: 20px; border: 1px solid var(--line); border-radius: 18px; background: #fff; }
+.admin-order-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.admin-order-head h2 { margin: 5px 0; font-size: 19px; }
+.admin-order-head a { color: var(--accent); font-size: 12px; overflow-wrap: anywhere; }
+.admin-order-details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 18px; padding-block: 14px; }
+.admin-order-details p { display: grid; gap: 4px; min-width: 0; margin: 0; color: var(--muted); font-size: 13px; overflow-wrap: anywhere; }
+.admin-order-details strong { color: var(--ink); font-size: 11px; }
+.admin-order-details a { color: inherit; }
+.admin-order-items { display: grid; gap: 6px; margin: 0; padding: 13px 0 16px 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+.admin-status-form { display: flex; align-items: end; gap: 10px; }
+.admin-status-form label { display: grid; gap: 6px; min-width: 0; color: var(--ink); font-size: 12px; font-weight: 650; }
+.admin-status-form select { min-width: 190px; border: 1px solid var(--line-strong); border-radius: 10px; background: #fff; padding: 10px 12px; color: var(--ink); font: inherit; font-weight: 400; }
+.admin-setup-note { padding: 14px; border-radius: 12px; background: var(--surface-2); color: var(--muted); font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; }
+.admin-setup-note code { color: var(--ink); }
 .account-welcome { display: flex; justify-content: space-between; align-items: center; gap: 18px; margin-bottom: 26px; padding: 26px 30px; border: 1px solid var(--line); border-radius: 22px; background: linear-gradient(110deg, #fff, #fff1e8); }
 .account-welcome h1 { margin: 8px 0; font-size: clamp(28px, 4vw, 40px); }
 .account-welcome p:last-child { margin: 0; color: var(--muted); }
@@ -946,6 +967,14 @@ body.cart-locked { overflow: hidden; }
 .account-order-list li { display: flex; align-items: center; gap: 12px; justify-content: space-between; padding: 12px; border: 1px solid var(--line); border-radius: 12px; }
 .account-order-list li > div { display: grid; gap: 3px; min-width: 0; }
 .account-order-list li > div span, .order-status { color: var(--muted); font-size: 12px; overflow-wrap: anywhere; }
+@media (max-width: 600px) {
+  .admin-welcome { align-items: flex-start; padding: 20px; }
+  .admin-order-card { padding: 15px; }
+  .admin-order-details { grid-template-columns: 1fr; }
+  .admin-status-form { align-items: stretch; flex-direction: column; }
+  .admin-status-form select { min-width: 0; }
+  .admin-status-form .btn { justify-content: center; }
+}
 
 html[data-theme="dark"] {
   color-scheme: dark;
@@ -968,7 +997,8 @@ html[data-theme="dark"] .hero-stage,
 html[data-theme="dark"] .promo-item,
 html[data-theme="dark"] .cart-foot { background: var(--surface); }
 html[data-theme="dark"] .category-banner,
-html[data-theme="dark"] .account-welcome { background: linear-gradient(110deg, #20232b, #29231f); }
+html[data-theme="dark"] .account-welcome,
+html[data-theme="dark"] .admin-welcome { background: linear-gradient(110deg, #20232b, #29231f); }
 html[data-theme="dark"] .category-banner img { mix-blend-mode: screen; opacity: .62; }
 html[data-theme="dark"] .sort-control select,
 html[data-theme="dark"] .card-save,
@@ -976,6 +1006,7 @@ html[data-theme="dark"] .flash-message,
 html[data-theme="dark"] .account-auth-card,
 html[data-theme="dark"] .account-nav,
 html[data-theme="dark"] .account-panel,
+html[data-theme="dark"] .admin-order-card,
 html[data-theme="dark"] .account-form textarea,
 html[data-theme="dark"] .cart-panel,
 html[data-theme="dark"] .checkout-panel,
@@ -997,6 +1028,8 @@ html[data-theme="dark"] .search input,
 html[data-theme="dark"] .auth-form input,
 html[data-theme="dark"] .account-form input,
 html[data-theme="dark"] .account-form textarea,
+html[data-theme="dark"] .account-form select,
+html[data-theme="dark"] .admin-status-form select,
 html[data-theme="dark"] .checkout-card input:not([type="radio"]),
 html[data-theme="dark"] .checkout-card select,
 html[data-theme="dark"] .checkout-card textarea,

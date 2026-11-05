@@ -16,10 +16,11 @@ Configure these for each Vercel environment where you want the features enabled:
   ```powershell
   .\.venv\Scripts\python.exe -c "import secrets; print(secrets.token_hex(32))"
   ```
-
 - `GOOGLE_CLIENT_ID`: the OAuth client ID from Google Cloud.
 - `GOOGLE_CLIENT_SECRET`: the OAuth client secret from Google Cloud.
 - `GOOGLE_REDIRECT_URI`: the exact public callback URL, for example `https://your-domain.example/account/google/callback`.
+- `ADMIN_EMAIL`: the email address used for the private admin login.
+- `ADMIN_PASSWORD`: a unique password for the admin portal. Store it as a sensitive Vercel environment variable; do not commit it or share it in chat.
 
 Do not commit these values or add them to frontend code. Use the same `FOOTMART_SECRET_KEY` for Production and Preview deployments if their login sessions need to remain valid between deployments.
 
@@ -38,3 +39,7 @@ Import the repository into Vercel and deploy it. The app uses Postgres whenever 
 The theme preference, wishlist, and recently viewed products are stored in the customer's browser. Reviews and order requests are stored in the configured database. Product brand, color, and stock-level filters require those attributes to be added to `data/catalog.json`; the current catalogue does not provide them.
 
 For local development, leave `DATABASE_URL` unset to use the local SQLite database. Set `FOOTMART_SECRET_KEY` locally if you need sessions to remain valid after restarting the app.
+
+## 6. Admin portal
+
+Set `ADMIN_EMAIL` and `ADMIN_PASSWORD` in Vercel's project environment settings, preferably for Production only. Use a unique password of at least 16 characters, then redeploy. The admin portal is available at `/admin/login`; it lists the latest 100 orders and allows status updates. Admin credentials are independent of customer accounts and are not stored in the database.
