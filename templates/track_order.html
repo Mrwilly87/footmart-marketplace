@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Order {{ order.tracking_code }} — {{ site.name or 'FootMart' }}{% endblock %}
+
+{% block body %}
+<section class="wrap tracking-page">
+  <p class="mini-label">Order tracking</p>
+  <h1>Order request saved</h1>
+  <p>Tracking code <strong>{{ order.tracking_code }}</strong></p>
+
+  <ol class="order-progress" aria-label="Order progress">
+    <li class="is-current"><span>1</span><strong>Request saved</strong><small>Send the WhatsApp message to notify FootMart</small></li>
+    <li><span>2</span><strong>Confirmation</strong><small>The store confirms stock and delivery</small></li>
+    <li><span>3</span><strong>Delivery</strong><small>Arrange delivery with the store</small></li>
+  </ol>
+
+  <div class="tracking-card">
+    <p><strong>Status:</strong> {{ order.status | replace('_', ' ') | title }}</p>
+    <p><strong>Delivery location:</strong> {{ order.delivery_location }}</p>
+    <p><strong>Payment:</strong> {{ order.payment_method }}</p>
+    <p><strong>Items:</strong> {{ order.item_count }}</p>
+    <ul class="tracking-items">
+      {% for item in order_items %}
+      <li>{{ item.name }}{% if item.size %} · EU {{ item.size }}{% endif %} · ×{{ item.qty }}</li>
+      {% endfor %}
+    </ul>
+    <p class="delivery-hint">This is not a payment or confirmed dispatch. If you have not sent the WhatsApp message yet, use the button below to notify the store.</p>
+    {% if site.whatsapp %}
+    <a class="btn btn-primary" href="https://wa.me/{{ site.whatsapp }}?text={{ ('Hello ' + (site.name or 'FootMart') + ', please update order ' + order.tracking_code) | urlencode }}">Ask the store for an update</a>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

@@ -12,7 +12,7 @@ from authlib.integrations.flask_client import OAuth
 from authlib.integrations.base_client.errors import OAuthError
 from authlib.jose.errors import JoseError
 from authlib.oauth2.rfc6749.errors import OAuth2Error
-from flask import Flask, abort, flash, g, redirect, render_template, request, session, url_for
+from flask import Flask, abort, flash, g, jsonify, redirect, render_template, request, session, url_for
 from requests.exceptions import RequestException
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -169,6 +169,40 @@ def init_db():
                 )
                 """
             )
+            db.execute(
+                """
+                CREATE TABLE IF NOT EXISTS reviews (
+                    id BIGSERIAL PRIMARY KEY,
+                    product_id TEXT NOT NULL,
+                    user_id BIGINT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+                    rating INTEGER NOT NULL CHECK (rating BETWEEN 1 AND 5),
+                    review_text TEXT NOT NULL,
+                    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                    UNIQUE (product_id, user_id)
+                )
+                """
+            )
+            db.execute(
+                """
+                CREATE TABLE IF NOT EXISTS orders (
+                    id BIGSERIAL PRIMARY KEY,
+                    tracking_code TEXT NOT NULL UNIQUE,
+                    user_id BIGINT REFERENCES users(id) ON DELETE SET NULL,
+                    customer_name TEXT NOT NULL,
+                    customer_phone TEXT NOT NULL,
+                    delivery_location TEXT NOT NULL,
+                    delivery_note TEXT NOT NULL DEFAULT '',
+                    payment_method TEXT NOT NULL,
+                    items_json TEXT NOT NULL,
+                    item_count INTEGER NOT NULL,
+                    subtotal NUMERIC,
+                    delivery_fee NUMERIC NOT NULL,
+                    total NUMERIC,
+                    status TEXT NOT NULL DEFAULT 'awaiting_whatsapp',
+                    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
+                )
+                """
+            )
         return
 
     with closing(sqlite3.connect(DATABASE_PATH)) as db, db:
@@ -231,6 +265,40 @@ def init_db():
             )
             """
         )
+        db.execute(
+            """
+            CREATE TABLE IF NOT EXISTS reviews (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                product_id TEXT NOT NULL,
+                user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+                rating INTEGER NOT NULL CHECK (rating BETWEEN 1 AND 5),
+                review_text TEXT NOT NULL,
+                created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                UNIQUE (product_id, user_id)
+            )
+            """
+        )
+        db.execute(
+            """
+            CREATE TABLE IF NOT EXISTS orders (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                tracking_code TEXT NOT NULL UNIQUE,
+                user_id INTEGER REFERENCES users(id) ON DELETE SET NULL,
+                customer_name TEXT NOT NULL,
+                customer_phone TEXT NOT NULL,
+                delivery_location TEXT NOT NULL,
+                delivery_note TEXT NOT NULL DEFAULT '',
+                payment_method TEXT NOT NULL,
+                items_json TEXT NOT NULL,
+                item_count INTEGER NOT NULL,
+                subtotal REAL,
+                delivery_fee REAL NOT NULL,
+                total REAL,
+                status TEXT NOT NULL DEFAULT 'awaiting_whatsapp',
+                created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+            )
+            """
+        )
         db.execute("PRAGMA foreign_keys = ON")
 
 
@@ -259,7 +327,7 @@ def csrf_token():
 
 
 def valid_csrf():
-    provided = request.form.get("csrf_token", "")
+    provided = request.form.get("csrf_token", "") or request.headers.get("X-CSRF-Token", "")
     expected = session.get("_csrf_token", "")
     return bool(expected and provided and secrets.compare_digest(expected, provided))
 
@@ -334,6 +402,15 @@ def price_text(item):
     return "KSh {:,.0f}".format(float(value))
 
 
+def size_options(item):
+    value = str(item.get("sizes", "")).strip()
+    match = re.fullmatch(r"(\d+)\s*[-–]\s*(\d+)", value)
+    if not match:
+        return []
+    first, last = map(int, match.groups())
+    return [str(size) for size in range(first, last + 1)] if first <= last else []
+
+
 app.jinja_env.filters["price_text"] = price_text
 
 
@@ -356,16 +433,19 @@ def storefront():
             "whatsapp": site().get("whatsapp", ""),
             "delivery_fee": site().get("delivery_fee", 350),
             "free_delivery_threshold": site().get("free_delivery_threshold", 3500),
+            "authenticated": current_user is not None,
             "products": {
                 item["id"]: {
                     "name": item["name"],
                     "code": item.get("code", ""),
                     "sizes": item.get("sizes", ""),
+                    "size_options": size_options(item),
                     "price": item.get("price"),
                     "images": item["images"],
                 }
                 for item in products()
             },
+            "csrf_token": csrf_token(),
         }
     }
 
@@ -443,6 +523,22 @@ def product_page(product_id):
     item = find(product_id)
     if item is None:
         abort(404)
+    review_summary = get_db().execute(
+        "SELECT COUNT(*) AS count, AVG(rating) AS average FROM reviews WHERE product_id = ?",
+        (product_id,),
+    ).fetchone()
+    reviews = get_db().execute(
+        "SELECT reviews.rating, reviews.review_text, reviews.created_at, users.full_name "
+        "FROM reviews JOIN users ON users.id = reviews.user_id "
+        "WHERE reviews.product_id = ? ORDER BY reviews.created_at DESC LIMIT 50",
+        (product_id,),
+    ).fetchall()
+    user_review = None
+    if g.current_user:
+        user_review = get_db().execute(
+            "SELECT rating, review_text FROM reviews WHERE product_id = ? AND user_id = ?",
+            (product_id, g.current_user["id"]),
+        ).fetchone()
     related = [
         other
         for other in products()
@@ -452,8 +548,200 @@ def product_page(product_id):
         "product.html",
         site=site(),
         product=item,
+        size_options=size_options(item),
+        review_count=review_summary["count"],
+        review_average=review_summary["average"],
+        reviews=reviews,
+        user_review=user_review,
         related=related,
         categories=categories(),
+    )
+
+
+@app.route("/product/<product_id>/reviews", methods=["POST"])
+@login_required
+def submit_review(product_id):
+    if find(product_id) is None:
+        abort(404)
+    if not valid_csrf():
+        abort(400, description="Invalid form token. Refresh the page and try again.")
+    rating_value = request.form.get("rating", "")
+    review_text = request.form.get("review_text", "").strip()
+    if rating_value not in {"1", "2", "3", "4", "5"}:
+        flash("Choose a rating from 1 to 5 stars.", "error")
+    elif len(review_text) < 3 or len(review_text) > 1000:
+        flash("Write a review between 3 and 1,000 characters.", "error")
+    else:
+        db = get_db()
+        db.execute(
+            """
+            INSERT INTO reviews (product_id, user_id, rating, review_text)
+            VALUES (?, ?, ?, ?)
+            ON CONFLICT (product_id, user_id) DO UPDATE
+            SET rating = excluded.rating, review_text = excluded.review_text
+            """,
+            (product_id, g.current_user["id"], int(rating_value), review_text),
+        )
+        db.commit()
+        flash("Your product review has been saved.", "success")
+    return redirect(url_for("product_page", product_id=product_id) + "#reviews")
+
+
+@app.route("/orders", methods=["POST"])
+def create_order():
+    if not g.current_user:
+        return jsonify(
+            error="Sign in or create an account to place your order.",
+            sign_in_url=url_for("checkout"),
+        ), 401
+    if not valid_csrf():
+        return jsonify(error="Your session expired. Refresh the page and try again."), 400
+    if not site().get("whatsapp"):
+        return jsonify(error="Order requests are temporarily unavailable."), 503
+    payload = request.get_json(silent=True)
+    if not isinstance(payload, dict):
+        return jsonify(error="Invalid order details."), 400
+    name_value = payload.get("name")
+    phone_value = payload.get("phone")
+    location_value = payload.get("location")
+    note_value = payload.get("note", "")
+    if not all(isinstance(value, str) for value in (name_value, phone_value, location_value, note_value)):
+        return jsonify(error="Check your name, phone number, and delivery location."), 400
+    name = name_value.strip()
+    phone = normalize_phone(phone_value)
+    location = location_value.strip()
+    note = note_value.strip()
+    if (
+        not name
+        or len(name) > 100
+        or not phone
+        or not location
+        or len(location) > 300
+        or len(note) > 500
+    ):
+        return jsonify(error="Check your name, phone number, and delivery location."), 400
+    if payload.get("payment") != "Cash on delivery":
+        return jsonify(error="Only cash on delivery is currently available."), 400
+    lines = payload.get("items")
+    if not isinstance(lines, list) or not lines or len(lines) > 40:
+        return jsonify(error="Your cart is empty or contains too many items."), 400
+
+    item_snapshots = []
+    subtotal = 0
+    unknown_price = False
+    item_count = 0
+    for line in lines:
+        if not isinstance(line, dict):
+            return jsonify(error="One or more cart items are invalid."), 400
+        item = find(str(line.get("id", "")))
+        quantity = line.get("qty")
+        size_value = line.get("size", "")
+        if not isinstance(size_value, str):
+            return jsonify(error="Check the product and size selections in your cart."), 400
+        selected_size = size_value.strip()
+        if (
+            item is None
+            or isinstance(quantity, bool)
+            or not isinstance(quantity, int)
+            or not 1 <= quantity <= 99
+            or len(selected_size) > 20
+            or (size_options(item) and selected_size not in size_options(item))
+        ):
+            return jsonify(error="Check the product and size selections in your cart."), 400
+        price = item.get("price")
+        if price in (None, ""):
+            unknown_price = True
+            unit_price = None
+        else:
+            unit_price = float(price)
+            subtotal += unit_price * quantity
+        item_count += quantity
+        item_snapshots.append(
+            {
+                "id": item["id"],
+                "name": item["name"],
+                "code": item.get("code", ""),
+                "size": selected_size,
+                "qty": quantity,
+                "unit_price": unit_price,
+            }
+        )
+
+    delivery_fee = float(site().get("delivery_fee", 350))
+    threshold = float(site().get("free_delivery_threshold", 3500))
+    if re.search(r"\bnairobi\b", location, re.IGNORECASE) and subtotal > threshold:
+        delivery_fee = 0
+    known_subtotal = None if unknown_price else subtotal
+    total = None if unknown_price else subtotal + delivery_fee
+    tracking_code = secrets.token_urlsafe(18)
+    db = get_db()
+    db.execute(
+        """
+        INSERT INTO orders (
+            tracking_code, user_id, customer_name, customer_phone, delivery_location,
+            delivery_note, payment_method, items_json, item_count, subtotal,
+            delivery_fee, total
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """,
+        (
+            tracking_code,
+            g.current_user["id"] if g.current_user else None,
+            name,
+            phone,
+            location,
+            note,
+            "Cash on delivery",
+            json.dumps(item_snapshots, separators=(",", ":")),
+            item_count,
+            known_subtotal,
+            delivery_fee,
+            total,
+        ),
+    )
+    db.commit()
+    return jsonify(
+        tracking_code=tracking_code,
+        tracking_url=url_for("track_order", tracking_code=tracking_code),
+    ), 201
+
+
+@app.route("/checkout")
+def checkout():
+    if not g.current_user:
+        flash("Sign in or create an account to place your order. Your cart will be saved.", "info")
+        return redirect(url_for("login", next=url_for("checkout")))
+    return redirect(url_for("index", checkout="1"))
+
+
+@app.route("/track", methods=["GET", "POST"])
+def track_order_entry():
+    if request.method == "POST":
+        tracking_code = request.form.get("tracking_code", "").strip()
+        if re.fullmatch(r"[A-Za-z0-9_-]{20,64}", tracking_code):
+            return redirect(url_for("track_order", tracking_code=tracking_code))
+        flash("Enter the tracking code from your order confirmation.", "error")
+    return render_template("track_order_entry.html", site=site(), categories=categories())
+
+
+@app.route("/track/<tracking_code>")
+def track_order(tracking_code):
+    if not re.fullmatch(r"[A-Za-z0-9_-]{20,64}", tracking_code):
+        abort(404)
+    order = get_db().execute(
+        """
+        SELECT tracking_code, items_json, item_count, delivery_location,
+               payment_method, status, created_at
+        FROM orders WHERE tracking_code = ?
+        """,
+        (tracking_code,),
+    ).fetchone()
+    if order is None:
+        abort(404)
+    return render_template(
+        "track_order.html",
+        site=site(),
+        order=order,
+        order_items=json.loads(order["items_json"]),
     )
 
 
@@ -666,11 +954,17 @@ def profile():
         "FROM addresses WHERE user_id = ? ORDER BY id DESC",
         (g.current_user["id"],),
     ).fetchall()
+    account_orders = get_db().execute(
+        "SELECT tracking_code, item_count, status, created_at "
+        "FROM orders WHERE user_id = ? ORDER BY created_at DESC LIMIT 20",
+        (g.current_user["id"],),
+    ).fetchall()
     return render_template(
         "account/profile.html",
         site=site(),
         categories=categories(),
         addresses=addresses,
+        account_orders=account_orders,
     )
 
 

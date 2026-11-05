@@ -14,7 +14,7 @@
   <span aria-current="page">{{ product.name }}</span>
 </nav>
 
-<article class="wrap detail">
+<article class="wrap detail" data-view-product="{{ product.id }}">
   <section class="gallery">
     <div class="gallery-stage">
       <img class="gallery-main" id="gallery-main"
@@ -63,6 +63,15 @@
     {% endif %}
 
     <div class="buy-row">
+      {% if size_options %}
+      <label class="buy-size-control">
+        <span>Choose size</span>
+        <select id="buy-size" required aria-label="Choose shoe size">
+          <option value="">Select size</option>
+          {% for size in size_options %}<option value="{{ size }}">EU {{ size }}</option>{% endfor %}
+        </select>
+      </label>
+      {% endif %}
       <div class="qty" aria-label="Quantity">
         <button class="stepper-btn" type="button" id="qty-dec" aria-label="Decrease quantity">−</button>
         <span class="stepper-qty" id="buy-qty">1</span>
@@ -85,6 +94,59 @@
     {% if site.delivery_note %}<p class="info-note">{{ site.delivery_note }}</p>{% endif %}
   </section>
 </article>
+
+<section class="wrap reviews-section" id="reviews">
+  <div class="reviews-heading">
+    <div>
+      <p class="mini-label">Customer feedback</p>
+      <h2 class="section-title">Reviews</h2>
+    </div>
+    <p class="review-summary">
+      {% if review_count %}
+      <strong>{{ "%.1f" | format(review_average) }} / 5</strong> · {{ review_count }} review{{ '' if review_count == 1 else 's' }}
+      {% else %}
+      No reviews yet
+      {% endif %}
+    </p>
+  </div>
+
+  <div class="review-layout">
+    <form class="review-form" method="post" action="{{ url_for('submit_review', product_id=product.id) }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+      <h3>{{ 'Update your review' if user_review else 'Write a review' }}</h3>
+      {% if current_user %}
+      <label for="review-rating">Your rating</label>
+      <select id="review-rating" name="rating" required>
+        {% for rating in range(5, 0, -1) %}
+        <option value="{{ rating }}" {{ 'selected' if user_review and user_review.rating == rating }}>{{ rating }} star{{ '' if rating == 1 else 's' }}</option>
+        {% endfor %}
+      </select>
+      <label for="review-text">Your review</label>
+      <textarea id="review-text" name="review_text" rows="4" minlength="3" maxlength="1000" required>{{ user_review.review_text if user_review else '' }}</textarea>
+      <button class="btn btn-primary" type="submit">Save review</button>
+      <p class="delivery-hint">One review per account for each product. You can update your review later.</p>
+      {% else %}
+      <p>Sign in to leave a review.</p>
+      <a class="btn btn-ghost" href="{{ url_for('login', next=request.path + '#reviews') }}">Sign in</a>
+      {% endif %}
+    </form>
+
+    <div class="review-list">
+      {% for review in reviews %}
+      <article class="review-card">
+        <div class="review-card-heading">
+          <strong>{{ review.full_name }}</strong>
+          <span aria-label="{{ review.rating }} out of 5 stars">{{ '★' * review.rating }}{{ '☆' * (5 - review.rating) }}</span>
+        </div>
+        <p>{{ review.review_text }}</p>
+        <small>{{ review.created_at.strftime('%d %b %Y') if review.created_at.strftime is defined else review.created_at[:10] }}</small>
+      </article>
+      {% else %}
+      <p class="account-empty">Be the first to share feedback about this product.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 
 {% if related %}
 <section class="wrap related">

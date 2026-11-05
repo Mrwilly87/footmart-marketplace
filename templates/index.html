@@ -49,7 +49,7 @@
 <section class="promo-strip wrap" aria-label="Store benefits">
   <div class="promo-item"><span aria-hidden="true">⚡</span><div><strong>Quick dispatch</strong><small>Across Nairobi</small></div></div>
   <div class="promo-item"><span aria-hidden="true">✓</span><div><strong>Easy ordering</strong><small>Review your order before sending</small></div></div>
-  <div class="promo-item"><span aria-hidden="true">↗</span><div><strong>Flexible payment</strong><small>Cash on delivery or M-Pesa</small></div></div>
+  <div class="promo-item"><span aria-hidden="true">↗</span><div><strong>Cash on delivery</strong><small>Pay when your order arrives</small></div></div>
   <div class="promo-item"><span aria-hidden="true">📦</span><div><strong>Delivery offer</strong><small>Free in Nairobi over KSh {{ site.free_delivery_threshold | default(3500) | int }}</small></div></div>
 </section>
 
@@ -151,9 +151,18 @@
   </div>
 
   {% if products %}
+  <div class="listing-filters" aria-label="Filter products">
+    <label><span>Min price</span><input id="filter-min-price" type="number" min="0" inputmode="numeric" placeholder="KSh"></label>
+    <label><span>Max price</span><input id="filter-max-price" type="number" min="0" inputmode="numeric" placeholder="KSh"></label>
+    <label><span>EU size</span><select id="filter-size"><option value="">Any size</option></select></label>
+    <label><span>Size info</span><select id="filter-size-info"><option value="all">Any</option><option value="listed">Sizes listed</option><option value="confirm">Confirm with store</option></select></label>
+    <button class="saved-toggle" type="button" id="saved-toggle" aria-pressed="false">Saved items <span data-wishlist-count>0</span></button>
+    <button class="filter-reset" type="button" id="filter-reset">Clear filters</button>
+  </div>
   <ul class="grid">
     {% for item in products %}{{ card(item) }}{% endfor %}
   </ul>
+  <div class="empty filter-empty" id="filter-empty" hidden><p class="empty-title">No products match these filters.</p><button class="btn btn-ghost btn-sm" type="button" id="filter-empty-reset">Clear filters</button></div>
   {% else %}
   <div class="empty">
     <p class="empty-title">Nothing matches that search.</p>

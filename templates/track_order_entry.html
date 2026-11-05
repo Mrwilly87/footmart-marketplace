@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Track an order — {{ site.name or 'FootMart' }}{% endblock %}
+
+{% block body %}
+<section class="wrap tracking-page">
+  <p class="mini-label">Order support</p>
+  <h1>Track your order</h1>
+  <p>Enter the tracking code shown after you send an order request.</p>
+  <form class="tracking-form" method="post">
+    <label for="tracking-code">Tracking code</label>
+    <input id="tracking-code" name="tracking_code" type="text" minlength="20" maxlength="64"
+           autocomplete="off" spellcheck="false" required>
+    <button class="btn btn-primary" type="submit">Find order</button>
+  </form>
+</section>
+{% endblock %}

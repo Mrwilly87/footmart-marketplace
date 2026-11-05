@@ -1,5 +1,5 @@
 {% macro card(item) %}
-<li class="card reveal" data-product-card data-name="{{ item.name | lower }}" data-price="{{ item.price or 0 }}">
+<li class="card reveal" data-product-card data-name="{{ item.name | lower }}" data-price="{{ item.price or 0 }}" data-sizes="{{ item.sizes or '' }}">
   <a class="card-link" href="{{ url_for('product_page', product_id=item.id) }}">
     <div class="card-media">
       {% if item.badge %}<span class="card-badge">{{ item.badge }}</span>{% endif %}
@@ -11,6 +11,9 @@
       {% if item.code %}<p class="card-code">{{ item.code }}{% if item.sizes %} · {{ item.sizes }}{% endif %}</p>{% endif %}
     </div>
   </a>
+  <button class="card-save" type="button" data-wishlist="{{ item.id }}" aria-pressed="false" aria-label="Save {{ item.name }}">
+    <svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.8 8.6c0 5.2-8.8 10-8.8 10s-8.8-4.8-8.8-10a4.6 4.6 0 0 1 8.8-1.7 4.6 4.6 0 0 1 8.8 1.7Z"/></svg>
+  </button>
   <div class="card-foot">
     <p class="card-price {{ 'is-empty' if not item.price }}">{{ item | price_text }}</p>
     <button class="card-add" type="button" data-add-to-cart="{{ item.id }}"

@@ -4,6 +4,27 @@
 
   /* ---------- cart ---------- */
   var KEY = "footmart-cart-v1";
+  var WISHLIST_KEY = "footmart-wishlist-v1";
+
+  function readWishlist() {
+    try {
+      var saved = JSON.parse(localStorage.getItem(WISHLIST_KEY) || "[]");
+      return Array.isArray(saved) ? saved.filter(function (id) { return store.products[id]; }) : [];
+    } catch (e) { return []; }
+  }
+
+  function renderWishlist() {
+    var saved = readWishlist();
+    document.querySelectorAll("[data-wishlist]").forEach(function (button) {
+      var selected = saved.indexOf(button.getAttribute("data-wishlist")) !== -1;
+      button.classList.toggle("is-saved", selected);
+      button.setAttribute("aria-pressed", selected ? "true" : "false");
+      button.setAttribute("aria-label", (selected ? "Remove " : "Save ") + store.products[button.getAttribute("data-wishlist")].name);
+    });
+    document.querySelectorAll("[data-wishlist-count]").forEach(function (count) {
+      count.textContent = saved.length;
+    });
+  }
 
   function read() {
     try {
@@ -22,12 +43,14 @@
     return read().reduce(function (sum, line) { return sum + line.qty; }, 0);
   }
 
-  function add(id, qty) {
+  function add(id, qty, size) {
     var lines = read();
     var hit = null;
-    for (var i = 0; i < lines.length; i += 1) if (lines[i].id === id) hit = lines[i];
+    for (var i = 0; i < lines.length; i += 1) {
+      if (lines[i].id === id && (lines[i].size || "") === (size || "")) hit = lines[i];
+    }
     if (hit) hit.qty = Math.min(99, hit.qty + qty);
-    else lines.push({ id: id, qty: qty, size: "" });
+    else lines.push({ id: id, qty: qty, size: size || "" });
     write(lines);
   }
 
@@ -39,9 +62,21 @@
     write(lines);
   }
 
-  function setSize(id, size) {
-    var lines = read().map(function (l) { if (l.id === id) l.size = size; return l; });
-    write(lines, false);
+  function setSize(id, previousSize, size) {
+    var lines = read();
+    var target = lines.find(function (line) {
+      return line.id === id && (line.size || "") === previousSize;
+    });
+    var duplicate = lines.find(function (line) {
+      return line !== target && line.id === id && (line.size || "") === size;
+    });
+    if (target && duplicate) {
+      duplicate.qty = Math.min(99, duplicate.qty + target.qty);
+      lines = lines.filter(function (line) { return line !== target; });
+    } else if (target) {
+      target.size = size;
+    }
+    write(lines);
   }
 
   function remove(id) {
@@ -83,6 +118,10 @@
   function openCheckout() {
     if (!checkoutModal) return;
     if (!read().length) return;
+    if (!store.authenticated) {
+      window.location.assign("/checkout");
+      return;
+    }
     closeChat();
     checkoutModal.classList.add("is-open");
     checkoutModal.setAttribute("aria-hidden", "false");
@@ -125,7 +164,7 @@
       summaryList.appendChild(row);
     });
 
-    delivery = isNairobi && subtotal > threshold ? 0 : deliveryFee;
+    var delivery = isNairobi && subtotal > threshold ? 0 : deliveryFee;
     var countEl = document.getElementById("summary-count");
     var emptyEl = document.getElementById("summary-empty");
     var subtotalEl = document.getElementById("summary-subtotal");
@@ -141,6 +180,14 @@
       hintEl.textContent = isNairobi
         ? "Free Nairobi delivery on orders above KSh " + threshold.toLocaleString("en-KE") + "."
         : "Enter a Nairobi location to check eligibility for free delivery.";
+    }
+    var estimateEl = document.getElementById("delivery-estimate");
+    if (estimateEl) {
+      estimateEl.textContent = isNairobi
+        ? "Estimated delivery: usually 1–2 business days in Nairobi after confirmation. The store confirms timing."
+        : location && location.value.trim()
+          ? "Estimated delivery: usually 2–5 business days outside Nairobi after confirmation. The store confirms timing."
+          : "Estimated delivery: usually 1–2 business days in Nairobi and 2–5 elsewhere after confirmation.";
     }
   }
 
@@ -165,7 +212,7 @@
     chatbot.setAttribute("aria-hidden", "true");
   }
 
-  function orderUrl(details) {
+  function orderUrl(details, trackingCode) {
     var lines = read();
     var msg = "Hello " + store.name + ", I would like to order:\n";
     var subtotal = 0;
@@ -191,6 +238,10 @@
       msg += "\nDelivery location: " + details.location;
       if (details.note) msg += "\nDelivery note: " + details.note;
       msg += "\nPayment preference: " + details.payment;
+      if (trackingCode) {
+        msg += "\nTracking code: " + trackingCode;
+        msg += "\nTrack order: " + window.location.origin + "/track/" + trackingCode;
+      }
       msg += "\nSubtotal: " + (hasUnknownPrice ? "Confirm price" : "KSh " + subtotal.toLocaleString("en-KE"));
       msg += "\nDelivery: " + (delivery ? "KSh " + delivery.toLocaleString("en-KE") : "Free");
       msg += "\nEstimated total: " + (hasUnknownPrice ? "Confirm total" : "KSh " + (subtotal + delivery).toLocaleString("en-KE"));
@@ -266,14 +317,31 @@
         stepper.appendChild(qty);
         stepper.appendChild(plus);
 
-        var size = document.createElement("input");
+        var size;
+        if (item.size_options && item.size_options.length) {
+          size = document.createElement("select");
+          size.className = "cart-size";
+          var placeholder = document.createElement("option");
+          placeholder.value = "";
+          placeholder.textContent = "Choose size";
+          size.appendChild(placeholder);
+          item.size_options.forEach(function (option) {
+            var choice = document.createElement("option");
+            choice.value = option;
+            choice.textContent = "EU " + option;
+            size.appendChild(choice);
+          });
+          size.value = line.size || "";
+        } else {
+          size = document.createElement("input");
+          size.type = "text";
+          size.inputMode = "numeric";
+          size.placeholder = item.sizes ? "Size (" + item.sizes + ")" : "Size";
+          size.value = line.size || "";
+        }
         size.className = "cart-size";
-        size.type = "text";
-        size.inputMode = "numeric";
-        size.placeholder = item.sizes ? "Size (" + item.sizes + ")" : "Size";
         size.setAttribute("aria-label", "Shoe size for " + item.name);
-        size.value = line.size || "";
-        size.addEventListener("change", function () { setSize(id, size.value.trim()); });
+        size.addEventListener("change", function () { setSize(id, line.size || "", size.value.trim()); });
 
         var del = document.createElement("button");
         del.type = "button";
@@ -311,9 +379,16 @@
       placeOrderEl.disabled = !store.whatsapp || lines.length === 0;
       placeOrderEl.classList.toggle("is-off", lines.length === 0);
       placeOrderEl.classList.toggle("is-disabled", !store.whatsapp);
-      placeOrderEl.textContent = store.whatsapp ? "Place order" : "WhatsApp orders unavailable";
+      placeOrderEl.textContent = !store.whatsapp
+        ? "WhatsApp orders unavailable"
+        : store.authenticated ? "Place order" : "Sign in to place order";
     }
     if (noteEl) noteEl.hidden = Boolean(store.whatsapp);
+    var sizeWarning = document.getElementById("cart-size-warning");
+    if (sizeWarning && !lines.some(function (line) {
+      var item = store.products[line.id];
+      return item && item.size_options && item.size_options.length && !line.size;
+    })) sizeWarning.hidden = true;
   }
 
   /* ---------- triggers ---------- */
@@ -328,6 +403,10 @@
     if (checkoutOpener) {
       event.preventDefault();
       if (checkoutOpener.classList.contains("is-disabled")) return;
+      if (!store.authenticated) {
+        window.location.assign("/checkout");
+        return;
+      }
       closeCart();
       openCheckout();
       return;
@@ -335,6 +414,41 @@
 
     var checkoutCloser = event.target.closest("[data-checkout-close]");
     if (checkoutCloser) { event.preventDefault(); closeCheckout(); return; }
+
+    var savedButton = event.target.closest("[data-wishlist]");
+    if (savedButton) {
+      event.preventDefault();
+      event.stopPropagation();
+      var saved = readWishlist();
+      var savedId = savedButton.getAttribute("data-wishlist");
+      var savedIndex = saved.indexOf(savedId);
+      if (savedIndex === -1) saved.push(savedId);
+      else saved.splice(savedIndex, 1);
+      try { localStorage.setItem(WISHLIST_KEY, JSON.stringify(saved)); } catch (e) {}
+      renderWishlist();
+      applyProductFilters();
+      return;
+    }
+
+    var savedToggle = event.target.closest("#saved-toggle");
+    if (savedToggle) {
+      savedToggle.setAttribute("aria-pressed", savedToggle.getAttribute("aria-pressed") === "true" ? "false" : "true");
+      applyProductFilters();
+      return;
+    }
+
+    if (event.target.closest("#filter-reset") || event.target.closest("#filter-empty-reset")) {
+      event.preventDefault();
+      var filterForm = document.querySelector(".listing-filters");
+      if (filterForm) {
+        filterForm.querySelectorAll("input").forEach(function (input) { input.value = ""; });
+        filterForm.querySelectorAll("select").forEach(function (select) { select.value = select.id === "filter-size-info" ? "all" : ""; });
+      }
+      var savedToggleButton = document.getElementById("saved-toggle");
+      if (savedToggleButton) savedToggleButton.setAttribute("aria-pressed", "false");
+      applyProductFilters();
+      return;
+    }
 
     var chatbotOpen = event.target.closest("[data-chat-open]");
     if (chatbotOpen) { event.preventDefault(); openChat(); return; }
@@ -344,6 +458,8 @@
 
     var paymentChoice = event.target.closest(".payment-option");
     if (paymentChoice) {
+      var selectedRadio = paymentChoice.querySelector("input[type='radio']");
+      if (selectedRadio && selectedRadio.disabled) return;
       var parent = paymentChoice.parentNode;
       if (parent) {
         Array.prototype.forEach.call(parent.querySelectorAll(".payment-option"), function (option) {
@@ -360,7 +476,12 @@
       event.preventDefault();
       var id = adder.getAttribute("data-add-to-cart");
       var qtyInput = document.getElementById("buy-qty");
-      add(id, qtyInput ? parseInt(qtyInput.textContent, 10) || 1 : 1);
+      var selectedSize = document.getElementById("buy-size");
+      if (selectedSize && !selectedSize.value) {
+        selectedSize.reportValidity();
+        return;
+      }
+      add(id, qtyInput ? parseInt(qtyInput.textContent, 10) || 1 : 1, selectedSize ? selectedSize.value : "");
       adder.classList.add("is-done");
       var label = adder.querySelector(".add-label");
       if (label) {
@@ -377,6 +498,10 @@
       closeCart();
       closeCheckout();
       closeChat();
+      if (toggle && nav) {
+        nav.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+      }
     }
   });
 
@@ -386,6 +511,17 @@
     checkoutForm.addEventListener("change", renderOrderSummary);
     checkoutForm.addEventListener("submit", function (event) {
       event.preventDefault();
+      var missingSize = read().some(function (line) {
+        var item = store.products[line.id];
+        return item && item.size_options && item.size_options.length && !line.size;
+      });
+      if (missingSize) {
+        closeCheckout();
+        openCart();
+        var sizeWarning = document.getElementById("cart-size-warning");
+        if (sizeWarning) sizeWarning.hidden = false;
+        return;
+      }
       if (!store.whatsapp) {
         var status = document.getElementById("checkout-status");
         if (status) status.textContent = "Order requests are unavailable until a WhatsApp number is configured.";
@@ -400,14 +536,61 @@
         note: String(formData.get("delivery_note") || "").trim(),
         payment: String(formData.get("payment") || "Cash on delivery")
       };
-      var newWindow = window.open(orderUrl(details), "_blank");
-      if (newWindow) {
-        newWindow.opener = null;
-        closeCheckout();
-      } else {
-        var statusMessage = document.getElementById("checkout-status");
-        if (statusMessage) statusMessage.textContent = "WhatsApp did not open. Allow pop-ups and try again.";
-      }
+      var statusMessage = document.getElementById("checkout-status");
+      var confirmButton = document.getElementById("confirm-order");
+      var orderWindow = window.open("about:blank", "_blank");
+      if (confirmButton) confirmButton.disabled = true;
+      if (statusMessage) statusMessage.textContent = "Saving your order request…";
+      fetch("/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRF-Token": store.csrf_token || ""
+        },
+        body: JSON.stringify({
+          name: details.name,
+          phone: details.phone,
+          location: details.location,
+          note: details.note,
+          payment: details.payment,
+          items: read().map(function (line) {
+            return { id: line.id, qty: line.qty, size: line.size || "" };
+          })
+        })
+      }).then(function (response) {
+        return response.json().then(function (data) {
+          if (response.status === 401 && data.sign_in_url) {
+            window.location.assign(data.sign_in_url);
+            throw new Error("Sign in to continue to checkout.");
+          }
+          if (!response.ok) throw new Error(data.error || "We could not save your order. Please try again.");
+          return data;
+        });
+      }).then(function (data) {
+        var whatsappUrl = orderUrl(details, data.tracking_code);
+        write([]);
+        if (orderWindow) {
+          orderWindow.opener = null;
+          orderWindow.location.replace(whatsappUrl);
+          closeCheckout();
+        } else if (statusMessage) {
+          statusMessage.textContent = "Order saved. Continue to WhatsApp or keep your tracking code:";
+          var whatsappLink = document.createElement("a");
+          whatsappLink.href = whatsappUrl;
+          whatsappLink.target = "_blank";
+          whatsappLink.rel = "noopener";
+          whatsappLink.textContent = "Open WhatsApp";
+          var trackingLink = document.createElement("a");
+          trackingLink.href = data.tracking_url;
+          trackingLink.textContent = "Track order " + data.tracking_code;
+          statusMessage.append(document.createElement("br"), whatsappLink, document.createElement("br"), trackingLink);
+        }
+      }).catch(function (error) {
+        if (orderWindow) orderWindow.close();
+        if (statusMessage) statusMessage.textContent = error.message || "We could not save your order. Please try again.";
+      }).finally(function () {
+        if (confirmButton) confirmButton.disabled = false;
+      });
     });
   }
 
@@ -432,8 +615,60 @@
 
   var sortSelect = document.getElementById("product-sort");
   var productGrid = document.querySelector("#catalogue .grid");
+  var productCards = productGrid ? Array.prototype.slice.call(productGrid.querySelectorAll("[data-product-card]")) : [];
+  var sizeFilter = document.getElementById("filter-size");
+  function expandSizes(value) {
+    var match = String(value || "").match(/^\s*(\d+)\s*[-–]\s*(\d+)\s*$/);
+    if (!match) return [];
+    var sizes = [];
+    for (var size = Number(match[1]); size <= Number(match[2]); size += 1) sizes.push(String(size));
+    return sizes;
+  }
+
+  if (sizeFilter) {
+    var allSizes = {};
+    productCards.forEach(function (card) {
+      expandSizes(card.getAttribute("data-sizes")).forEach(function (size) { allSizes[size] = true; });
+    });
+    Object.keys(allSizes).sort(function (a, b) { return Number(a) - Number(b); }).forEach(function (size) {
+      var option = document.createElement("option");
+      option.value = size;
+      option.textContent = "EU " + size;
+      sizeFilter.appendChild(option);
+    });
+  }
+
+  function applyProductFilters() {
+    if (!productGrid) return;
+    var minField = document.getElementById("filter-min-price");
+    var maxField = document.getElementById("filter-max-price");
+    var sizeInfo = document.getElementById("filter-size-info");
+    var savedToggle = document.getElementById("saved-toggle");
+    var saved = readWishlist();
+    var min = minField && minField.value !== "" ? Number(minField.value) : null;
+    var max = maxField && maxField.value !== "" ? Number(maxField.value) : null;
+    var wantedSize = sizeFilter ? sizeFilter.value : "";
+    var infoMode = sizeInfo ? sizeInfo.value : "all";
+    var onlySaved = savedToggle && savedToggle.getAttribute("aria-pressed") === "true";
+    var visible = 0;
+    productCards.forEach(function (card) {
+      var price = Number(card.getAttribute("data-price"));
+      var sizes = expandSizes(card.getAttribute("data-sizes"));
+      var inRange = (min === null || (price > 0 && price >= min)) && (max === null || (price > 0 && price <= max));
+      var sizeMatches = !wantedSize || sizes.indexOf(wantedSize) !== -1;
+      var infoMatches = infoMode === "all" || (infoMode === "listed" ? sizes.length > 0 : sizes.length === 0);
+      var savedMatches = !onlySaved || saved.indexOf(card.getAttribute("data-product-card")) !== -1;
+      var matches = inRange && sizeMatches && infoMatches && savedMatches;
+      card.hidden = !matches;
+      if (matches) visible += 1;
+    });
+    var count = document.querySelector(".listing-count");
+    var empty = document.getElementById("filter-empty");
+    if (count) count.textContent = visible + " of " + productCards.length + " items";
+    if (empty) empty.hidden = visible > 0;
+  }
+
   if (sortSelect && productGrid) {
-    var productCards = Array.prototype.slice.call(productGrid.querySelectorAll("[data-product-card]"));
     productCards.forEach(function (card, index) { card.setAttribute("data-original-index", index); });
     sortSelect.addEventListener("change", function () {
       var mode = sortSelect.value;
@@ -452,6 +687,10 @@
       sorted.forEach(function (card) { productGrid.appendChild(card); });
     });
   }
+  document.querySelectorAll("#filter-min-price, #filter-max-price, #filter-size, #filter-size-info").forEach(function (control) {
+    control.addEventListener("input", applyProductFilters);
+    control.addEventListener("change", applyProductFilters);
+  });
 
   var chatbotBody = document.getElementById("chatbot-body");
   function addChatBubble(kind, message) {
@@ -478,7 +717,7 @@
       return "Delivery is available in Nairobi and other locations by arrangement. Nairobi orders above KSh " + Number(store.free_delivery_threshold || 3500).toLocaleString("en-KE") + " qualify for free delivery; otherwise the standard fee is KSh " + Number(store.delivery_fee || 350).toLocaleString("en-KE") + ".";
     }
     if (text.indexOf("pay") !== -1 || text.indexOf("mpesa") !== -1 || text.indexOf("m-pesa") !== -1) {
-      return "You can choose cash on delivery or M-Pesa. M-Pesa instructions are confirmed after you send the order request; payments are not collected on this website.";
+      return "Cash on delivery is currently available. M-Pesa checkout is not enabled yet, and no payment is collected on this website.";
     }
     var words = text.split(/\s+/).filter(function (word) { return word.length > 2; });
     var matches = Object.keys(store.products).map(function (id) { return store.products[id]; }).filter(function (item) {
@@ -521,6 +760,11 @@
       var open = nav.classList.toggle("is-open");
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
     });
+    nav.addEventListener("click", function (event) {
+      if (!event.target.closest(".cat-link") || window.innerWidth > 720) return;
+      nav.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+    });
   }
 
   var announce = document.getElementById("announce");
@@ -541,6 +785,70 @@
     new IntersectionObserver(function (entries) {
       header.classList.toggle("is-compact", !entries[0].isIntersecting);
     }, { threshold: 0 }).observe(sentinel);
+  }
+
+  var themeButton = document.getElementById("theme-toggle");
+  function applyTheme(theme) {
+    var dark = theme === "dark";
+    document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+    if (themeButton) {
+      themeButton.textContent = dark ? "☀" : "☾";
+      themeButton.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
+      themeButton.setAttribute("aria-pressed", dark ? "true" : "false");
+      themeButton.title = dark ? "Switch to light theme" : "Switch to dark theme";
+    }
+    var themeColor = document.querySelector('meta[name="theme-color"]');
+    if (themeColor) themeColor.content = dark ? "#111318" : "#ffffff";
+  }
+  applyTheme(document.documentElement.getAttribute("data-theme") || "dark");
+  if (themeButton) {
+    themeButton.addEventListener("click", function () {
+      var nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(nextTheme);
+      try { localStorage.setItem("footmart-theme-v1", nextTheme); } catch (e) {}
+    });
+  }
+
+  var recentSection = document.getElementById("recently-viewed-section");
+  var recentList = document.getElementById("recently-viewed-list");
+  var viewedProduct = document.querySelector("[data-view-product]");
+  if (viewedProduct) {
+    var viewedId = viewedProduct.getAttribute("data-view-product");
+    try {
+      var viewedIds = JSON.parse(localStorage.getItem("footmart-recent-v1") || "[]");
+      if (!Array.isArray(viewedIds)) viewedIds = [];
+      viewedIds = [viewedId].concat(viewedIds.filter(function (id) { return id !== viewedId; })).slice(0, 8);
+      localStorage.setItem("footmart-recent-v1", JSON.stringify(viewedIds));
+    } catch (e) {
+      viewedIds = [viewedId];
+    }
+  } else {
+    try {
+      viewedIds = JSON.parse(localStorage.getItem("footmart-recent-v1") || "[]");
+      if (!Array.isArray(viewedIds)) viewedIds = [];
+    } catch (e) {
+      viewedIds = [];
+    }
+  }
+  if (recentSection && recentList && viewedIds.length) {
+    viewedIds.forEach(function (id) {
+      var item = store.products[id];
+      if (!item) return;
+      var link = document.createElement("a");
+      link.className = "recent-card";
+      link.href = "/product/" + encodeURIComponent(id);
+      var image = document.createElement("img");
+      image.src = "/img/thumb_" + item.images[0];
+      image.alt = item.name;
+      image.loading = "lazy";
+      var name = document.createElement("strong");
+      name.textContent = item.name;
+      var price = document.createElement("span");
+      price.textContent = money(item);
+      link.append(image, name, price);
+      recentList.appendChild(link);
+    });
+    recentSection.hidden = !recentList.children.length;
   }
 
   var scenes = Array.prototype.slice.call(document.querySelectorAll(".scene"));
@@ -608,5 +916,10 @@
     });
   }
 
+  renderWishlist();
+  applyProductFilters();
   render();
+  if (new URLSearchParams(window.location.search).get("checkout") === "1") {
+    openCheckout();
+  }
 })();

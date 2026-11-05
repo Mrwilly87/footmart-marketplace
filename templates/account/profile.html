@@ -109,11 +109,22 @@
         <div class="account-panel-head">
           <div><p class="mini-label">Shopping activity</p><h2>My orders</h2></div>
         </div>
+        {% if account_orders %}
+        <ul class="account-order-list">
+          {% for order in account_orders %}
+          <li>
+            <div><strong>{{ order.item_count }} item{{ '' if order.item_count == 1 else 's' }}</strong><span>Code {{ order.tracking_code }}</span></div>
+            <span class="order-status">{{ order.status | replace('_', ' ') | title }}</span>
+            <a class="btn btn-ghost btn-sm" href="{{ url_for('track_order', tracking_code=order.tracking_code) }}">Track order</a>
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
         <div class="account-empty">
           <strong>No account orders to show yet</strong>
-          <p>Orders are currently sent to the store through WhatsApp and are not saved to order history. Contact the store directly for an update on an order request.</p>
-          {% if site.whatsapp %}<a class="btn btn-ghost btn-sm" href="https://wa.me/{{ site.whatsapp }}">Contact customer support</a>{% endif %}
+          <p>Your future order requests will appear here. Guest orders can be tracked with their order code.</p>
         </div>
+        {% endif %}
       </section>
 
       <section class="account-panel" id="security">

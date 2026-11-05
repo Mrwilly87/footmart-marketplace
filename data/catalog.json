@@ -18,7 +18,7 @@
     "announce": "Free delivery in Nairobi on orders above KSh 3,500",
     "announce_link": "/",
     "announce_link_text": "Shop now",
-    "delivery_note": "Pay on delivery or through M-Pesa. Size confirmation is available before dispatch."
+    "delivery_note": "Cash on delivery is available. M-Pesa checkout is coming soon. Size confirmation is available before dispatch."
   },
   "products": [
     {
@@ -2048,7 +2048,7 @@
       "category": "mens-shoes",
       "category_label": "Men's Shoes",
       "sizes": "40-45",
-      "price": 525,
+      "price": 825,
       "images": [
         "p068.webp"
       ],
@@ -2112,7 +2112,7 @@
       "category": "mens-shoes",
       "category_label": "Men's Shoes",
       "sizes": "",
-      "price": 675,
+      "price": 1205,
       "images": [
         "p070.webp"
       ],
@@ -2496,7 +2496,7 @@
       "category": "kids",
       "category_label": "Kids",
       "sizes": "31-36",
-      "price": 675,
+      "price": 405,
       "images": [
         "p082.webp"
       ],
@@ -2848,7 +2848,7 @@
       "category": "mens-shoes",
       "category_label": "Men's Shoes",
       "sizes": "40-45",
-      "price": 500,
+      "price": 900,
       "images": [
         "p093.webp"
       ],
@@ -3008,7 +3008,7 @@
       "category": "mens-shoes",
       "category_label": "Men's Shoes",
       "sizes": "",
-      "price": 875,
+      "price": 1275,
       "images": [
         "p098.webp"
       ],
@@ -3104,7 +3104,7 @@
       "category": "mens-shoes",
       "category_label": "Men's Shoes",
       "sizes": "",
-      "price": 600,
+      "price": 1200,
       "images": [
         "p101.webp"
       ],

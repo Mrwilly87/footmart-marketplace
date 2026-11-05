@@ -5,7 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{% block title %}{{ site.name or 'Shop' }}{% endblock %}</title>
 <meta name="description" content="{{ site.tagline or '' }}">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#111318">
+<script>
+  try {
+    var savedTheme = localStorage.getItem("footmart-theme-v1");
+    if (savedTheme === "dark" || savedTheme === "light") {
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    } else {
+      document.documentElement.setAttribute("data-theme", "dark");
+    }
+  } catch (error) {
+    document.documentElement.setAttribute("data-theme", "dark");
+  }
+</script>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
@@ -41,6 +53,7 @@
       </svg>
       <span class="cart-count is-empty" data-cart-count>0</span>
     </button>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme" title="Switch theme">☾</button>
 
     <a class="account-link" href="{{ url_for('profile') if current_user else url_for('login') }}">
       <span class="account-avatar" aria-hidden="true">{{ current_user.full_name[0] | upper if current_user else 'U' }}</span>
@@ -50,7 +63,10 @@
       </span>
     </a>
 
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="cat-nav">Categories</button>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="cat-nav" aria-label="Browse categories">
+      <span class="nav-toggle-label">Categories</span>
+      <span class="nav-toggle-icon" aria-hidden="true">☰</span>
+    </button>
   </div>
 
   <nav class="cat-nav" id="cat-nav" aria-label="Product categories">
@@ -77,6 +93,14 @@
 {% block body %}{% endblock %}
 </main>
 
+<section class="wrap recent-section" id="recently-viewed-section" hidden aria-labelledby="recently-viewed-title">
+  <div class="rail-head">
+    <h2 class="rail-title" id="recently-viewed-title">Recently viewed</h2>
+    <span class="mono">Your browsing history</span>
+  </div>
+  <div class="recent-track" id="recently-viewed-list"></div>
+</section>
+
 <footer class="site-footer">
   <div class="wrap footer-inner">
     <div>
@@ -90,6 +114,7 @@
       {% if site.location %}<li>{{ site.location }}</li>{% endif %}
     </ul>
     <p class="footer-note">Prices, contacts and products live in <code>data/catalog.json</code>.</p>
+    <p class="footer-note"><a href="{{ url_for('track_order_entry') }}">Track an order</a></p>
   </div>
 </footer>
 
@@ -102,13 +127,14 @@
     </header>
 
     <p class="cart-empty" id="cart-empty">Nothing in the cart yet. Pick a style and add it.</p>
+    <p class="cart-size-warning" id="cart-size-warning" role="alert" hidden>Choose a size for each pair with size options before continuing.</p>
     <ul class="cart-lines" id="cart-lines" hidden></ul>
 
     <footer class="cart-foot">
       <p class="cart-total" id="cart-total"></p>
       <p class="cart-note" id="cart-note" hidden>Set <code>site.whatsapp</code> in <code>data/catalog.json</code> (international format, digits only) to accept orders.</p>
-      <button class="btn btn-primary btn-block is-off" id="cart-place-order" type="button">Place order</button>
-      <p class="cart-sub">Review your delivery details and payment preference before sending your order request.</p>
+      <button class="btn btn-primary btn-block is-off" id="cart-place-order" type="button">{{ 'Place order' if current_user else 'Sign in to place order' }}</button>
+      <p class="cart-sub">{{ 'Review your delivery details before sending your order request.' if current_user else 'Sign in or create an account to continue. Your cart will be saved.' }}</p>
     </footer>
   </aside>
 </div>
@@ -141,8 +167,8 @@
         <a class="btn btn-ghost btn-block" href="{{ url_for('profile') }}">Manage my account</a>
         {% else %}
         <p class="account-checkout-copy">Sign in or create an account to manage your details and delivery addresses.</p>
-        <a class="btn btn-primary btn-block" href="{{ url_for('login', next=request.path) }}">Sign in</a>
-        <a class="btn btn-ghost btn-block" href="{{ url_for('register', next=request.path) }}">Create account</a>
+        <a class="btn btn-primary btn-block" href="{{ url_for('login', next=url_for('checkout')) }}">Sign in</a>
+        <a class="btn btn-ghost btn-block" href="{{ url_for('register', next=url_for('checkout')) }}">Create account</a>
         <p class="guest-note">You can also continue as a guest below.</p>
         {% endif %}
       </section>
@@ -198,12 +224,12 @@
               <input type="radio" name="payment" value="Cash on delivery" checked>
               <span><strong>Cash on delivery</strong><small>Pay when your order arrives</small></span>
             </label>
-            <label class="payment-option">
-              <input type="radio" name="payment" value="M-Pesa">
-              <span><strong>M-Pesa</strong><small>Payment instructions are confirmed after you send the request</small></span>
+            <label class="payment-option is-disabled">
+              <input type="radio" name="payment" value="M-Pesa" disabled>
+              <span><strong>M-Pesa <small>Coming soon</small></strong><small>Not available at checkout yet</small></span>
             </label>
           </div>
-          <p class="payment-disclaimer">No card or M-Pesa payment is collected on this website.</p>
+          <p class="payment-disclaimer">Only cash on delivery is available. No payment is collected on this website.</p>
         </section>
       </form>
 
@@ -223,6 +249,7 @@
           <strong id="summary-delivery">KSh 350</strong>
         </div>
         <p class="delivery-hint" id="delivery-hint">Free Nairobi delivery on orders above KSh {{ site.free_delivery_threshold | default(3500) | int }}.</p>
+        <p class="delivery-hint" id="delivery-estimate">Estimated delivery: Nairobi 1–2 business days; other areas 2–5 business days. The store confirms timing.</p>
         <div class="summary-total is-grand">
           <span>Total</span>
           <strong id="summary-total">KSh 0</strong>
