@@ -63,19 +63,28 @@
       </span>
     </a>
 
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="cat-nav" aria-label="Browse categories">
-      <span class="nav-toggle-label">Categories</span>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="cat-nav" aria-label="Open site menu">
+      <span class="nav-toggle-label">Menu</span>
       <span class="nav-toggle-icon" aria-hidden="true">☰</span>
     </button>
   </div>
 
-  <nav class="cat-nav" id="cat-nav" aria-label="Product categories">
+  <nav class="cat-nav" id="cat-nav" aria-label="Main menu">
     <div class="wrap cat-nav-inner">
-      <a class="cat-link {{ 'is-active' if not active_category | default('', true) }}" href="{{ url_for('index') }}">All</a>
+      <a class="cat-link {{ 'is-active' if request.endpoint == 'index' and not active_category | default('', true) }}"
+         href="{{ url_for('index') }}"
+         {% if request.endpoint == 'index' and not active_category | default('', true) %}aria-current="page"{% endif %}>Home</a>
       {% for cat in categories %}
-      <a class="cat-link {{ 'is-active' if active_category == cat.slug }}"
+      <a class="cat-link {{ 'is-active' if request.endpoint == 'index' and active_category == cat.slug }}"
+         {% if request.endpoint == 'index' and active_category == cat.slug %}aria-current="page"{% endif %}
          href="{{ url_for('index', cat=cat.slug) }}">{{ cat.label }} <span class="cat-count">{{ cat.count }}</span></a>
       {% endfor %}
+      <a class="cat-link nav-utility-link {{ 'is-active' if request.path.startswith('/track') }}"
+         {% if request.path.startswith('/track') %}aria-current="page"{% endif %}
+         href="{{ url_for('track_order_entry') }}">Track order</a>
+      <a class="cat-link nav-utility-link {{ 'is-active' if request.path.startswith('/account') }}"
+         {% if request.path.startswith('/account') %}aria-current="page"{% endif %}
+         href="{{ url_for('profile') if current_user else url_for('login') }}">My account</a>
     </div>
   </nav>
 </header>

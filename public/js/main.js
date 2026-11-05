@@ -759,11 +759,20 @@
     toggle.addEventListener("click", function () {
       var open = nav.classList.toggle("is-open");
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.setAttribute("aria-label", open ? "Close site menu" : "Open site menu");
     });
     nav.addEventListener("click", function (event) {
       if (!event.target.closest(".cat-link") || window.innerWidth > 720) return;
       nav.classList.remove("is-open");
       toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "Open site menu");
+    });
+    nav.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" || !nav.classList.contains("is-open")) return;
+      nav.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "Open site menu");
+      toggle.focus();
     });
   }
 
