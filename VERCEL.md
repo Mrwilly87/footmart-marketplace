@@ -19,8 +19,8 @@ Configure these for each Vercel environment where you want the features enabled:
 - `GOOGLE_CLIENT_ID`: the OAuth client ID from Google Cloud.
 - `GOOGLE_CLIENT_SECRET`: the OAuth client secret from Google Cloud.
 - `GOOGLE_REDIRECT_URI`: the exact public callback URL, for example `https://your-domain.example/account/google/callback`.
-- `ADMIN_EMAIL`: the email address used for the private admin login.
-- `ADMIN_PASSWORD`: a unique password for the admin portal. Store it as a sensitive Vercel environment variable; do not commit it or share it in chat.
+- `ADMIN_EMAIL`: the email address used for the private admin login. `EMAIL_LOG_IN` is also accepted.
+- `ADMIN_PASSWORD`: a unique password for the admin portal. `LOG_IN_PASS` is also accepted. Store it as a sensitive Vercel environment variable; do not commit it or share it in chat.
 
 Do not commit these values or add them to frontend code. Use the same `FOOTMART_SECRET_KEY` for Production and Preview deployments if their login sessions need to remain valid between deployments.
 

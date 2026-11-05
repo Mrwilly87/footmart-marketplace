@@ -119,8 +119,10 @@ if google_enabled:
         client_kwargs={"scope": "openid email profile"},
     )
 
-ADMIN_EMAIL = os.environ.get("ADMIN_EMAIL", "").strip().lower()
-ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "")
+ADMIN_EMAIL = (
+    os.environ.get("ADMIN_EMAIL") or os.environ.get("EMAIL_LOG_IN", "")
+).strip().lower()
+ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD") or os.environ.get("LOG_IN_PASS", "")
 ADMIN_STATUSES = (
     "awaiting_whatsapp",
     "confirmed",
