@@ -103,18 +103,36 @@
 
 <footer class="site-footer">
   <div class="wrap footer-inner">
-    <div>
-      <p class="footer-brand">{{ site.brand_lead or site.name }}{% if site.brand_tail %} {{ site.brand_tail }}{% endif %}</p>
+    <div class="footer-about">
+      <a class="brand footer-brand" href="{{ url_for('index') }}" aria-label="{{ site.name }} home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">{{ site.brand_lead or site.name }}{% if site.brand_tail %}<em>{{ site.brand_tail }}</em>{% endif %}</span>
+      </a>
       {% if site.tagline %}<p class="footer-tagline">{{ site.tagline }}</p>{% endif %}
+      {% if site.location %}<p class="footer-location">{{ site.location }}</p>{% endif %}
     </div>
-    <ul class="footer-contact">
-      {% if site.phone %}<li><a href="tel:{{ site.phone }}">{{ site.phone }}</a></li>{% endif %}
-      {% if site.whatsapp %}<li><a href="https://wa.me/{{ site.whatsapp }}">WhatsApp orders</a></li>{% endif %}
-      {% if site.email %}<li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>{% endif %}
-      {% if site.location %}<li>{{ site.location }}</li>{% endif %}
-    </ul>
-    <p class="footer-note">Prices, contacts and products live in <code>data/catalog.json</code>.</p>
-    <p class="footer-note"><a href="{{ url_for('track_order_entry') }}">Track an order</a></p>
+
+    <nav class="footer-links" aria-label="Shop">
+      <h2 class="footer-heading">Shop</h2>
+      <a href="{{ url_for('index') }}">All shoes</a>
+      {% for cat in categories[:5] %}
+      <a href="{{ url_for('index', cat=cat.slug) }}">{{ cat.label }}</a>
+      {% endfor %}
+    </nav>
+
+    <nav class="footer-links" aria-label="Help and account">
+      <h2 class="footer-heading">Help &amp; account</h2>
+      <a href="{{ url_for('track_order_entry') }}">Track an order</a>
+      <a href="{{ url_for('profile') if current_user else url_for('login') }}">{{ 'My account' if current_user else 'Sign in / Create account' }}</a>
+      {% if site.whatsapp %}<a href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener">WhatsApp support</a>{% endif %}
+      {% if site.email %}<a href="mailto:{{ site.email }}">Email support</a>{% endif %}
+      {% if site.phone %}<a href="tel:{{ site.phone }}">Call {{ site.phone }}</a>{% endif %}
+    </nav>
+
+    <div class="footer-bottom">
+      <span>{{ site.name or 'FootMart' }} · {{ site.location or 'Kenya' }}</span>
+      <a href="{{ url_for('index') }}">Shop FootMart</a>
+    </div>
   </div>
 </footer>
 
